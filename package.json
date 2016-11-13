@@ -1,0 +1,32 @@
+{
+  "name": "reactive-tournament",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@types/node": "^6.0.46",
+    "most": "^1.1.0",
+    "neo4j-driver": "^1.1.0-M02",
+    "snabbdom": "^0.5.4",
+    "typescript": "next",
+    "webpack": "^1.13.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build:clean": "rm -rf build && mkdir build",
+    "build:static": "cp -r static/* build/",
+    "build": "npm run build:clean && npm run build:static && tsc --project tsconfig.json",
+    "start": "npm run build && node build/server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcusnielsen/reactive-tournament.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcusnielsen/reactive-tournament/issues"
+  },
+  "homepage": "https://github.com/marcusnielsen/reactive-tournament#readme"
+}
