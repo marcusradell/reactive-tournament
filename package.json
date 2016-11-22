@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@most/hold": "^1.3.1",
     "@types/node": "^6.0.46",
+    "@types/ramda": "^0.0.2",
     "most": "^1.1.0",
+    "most-subject": "^5.2.0",
     "neo4j-driver": "^1.1.0-M02",
+    "ramda": "^0.22.1",
     "snabbdom": "^0.5.4",
     "typescript": "next",
     "webpack": "^1.13.3"
