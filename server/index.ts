@@ -1,38 +1,10 @@
-import * as http from 'http'
-import {partialRight} from 'ramda'
-import {fromEvent} from 'most'
+import * as express from 'express'
+import * as path from 'path'
 
-const httpServer =
-http.createServer()
-
-const httpServerEventStream =
-partialRight(fromEvent, [httpServer])
-
-const httpServerRequestStream =
-httpServerEventStream('request')
-
-const mapRequestArrayArgsToObject = 
-([req, res]: [http.ServerRequest, http.ServerResponse]) => {
-  return {req, res}
+function appOnListen() {
+  console.log('Server app started.')
 }
 
-const writeData =
-(({req, res}: {req: http.ServerRequest, res: http.ServerResponse}) => {
-  res.write('Hello World!')
-  return {req, res}
-})
-
-const httpServerOnListen =
-(): void => {
-  console.log('Server started.')
-}
-
-httpServerRequestStream
-.map(mapRequestArrayArgsToObject)
-.flatMap(writeData)
-.forEach(({res}: {res: http.ServerResponse}) => {
-  res.end()
-})
-
-httpServer
-.listen(3000, httpServerOnListen)
+const app = express()
+app.use(express.static(path.join(__dirname, '../client')))
+app.listen(3000, appOnListen)
