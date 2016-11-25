@@ -1,20 +1,19 @@
 const {resolve} = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
-const UglifyJsPlugin = new webpack.optimize.UglifyJsPlugin()
+const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const isProd = process.env.NODE_ENV === 'production' 
+const isProduction = process.env.NODE_ENV === 'production' 
 
-module.exports = function onWebpack(env) {
-  return {
+const config = {
     entry: './client/main.js',
     output: {
       path: resolve(__dirname, 'build'),
-      pathinfo: !isProd,
+      pathinfo: !isProduction,
       filename: 'bundle.[chunkhash].js'
     },
     context: __dirname,
-    devtool: 'source-map',
+    devtool: isProduction ? 'source-map' : 'eval',
     module: {
       rules: [
         {
@@ -49,4 +48,7 @@ module.exports = function onWebpack(env) {
       // LoaderOptionsPlugin
     ]
   }
+
+module.exports = function onWebpack() {
+  return config
 }

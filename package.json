@@ -21,7 +21,7 @@
     "snabbdom": "^0.5.4",
     "style-loader": "^0.13.1",
     "webpack": "2.1.0-beta.27",
-    "webpack-loader": "^0.0.1"
+    "webpack-merge": "^0.18.0"
   },
   "devDependencies": {
     "eslint": "^3.10.2",
@@ -32,7 +32,7 @@
     "flow-bin": "^0.36.0"
   },
   "scripts": {
-    "build:clean": "rm -rf build && mkdir -p build/client",
+    "build:clean": "rm -rf build",
     "build": "npm run build:clean && webpack --progress --profile --colors --display-error-details --display-cached",
     "start": "npm run build && node server/main.js",
     "watch": "nodemon --watch server --watch client -e ts -x 'npm start'",
