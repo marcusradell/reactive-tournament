@@ -1,13 +1,21 @@
-// const snabbdom = require('snabbdom')
+import snabbdom from 'snabbdom'
+import h from 'snabbdom/h'
+import eventListeners from 'snabbdom/modules/eventlisteners'
 import '../static/css/style.css'
-import {Subject, async} from 'most-subject'
+import ButtonModel from '../components/button'
+import Button from '../components/button/viewable'
 
 export function create(domElm) {
-  const pressSubject = async()
-
-  pressSubject.forEach(function onForEach(data) {
-    console.log('data', data)
+  const patch = snabbdom.init([
+    eventListeners
+  ])
+  
+  const buttonModel = ButtonModel()
+  const button = Button({model: buttonModel})
+  button.behaviors.streams.press.forEach(function onForEach() {
+    console.log('test')
   })
+  window.button = button
 
-  pressSubject.next('test')
+  patch(domElm, button.view())
 }

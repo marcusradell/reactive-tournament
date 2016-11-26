@@ -6,7 +6,7 @@ module.exports = {
         "jsx-a11y",
         "import"
     ],
-    rules: [
-        semi: ['never']
-    ]
-};
+    rules: {
+        semi: [2, 'never']
+    }
+}
