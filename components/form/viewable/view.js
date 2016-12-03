@@ -1,19 +1,4 @@
-export default function create({h, mostOf, children}) {
-  // const view = childViewsStream
-  // .switchMap(function onFlatMap(childViews) {
-  //   return Object.keys(childViews)
-  //   .map(function onMapChildViews(key) {
-  //     return h('div', [
-  //       childViews[key]
-  //     ])
-  //   })
-  // })
-  // .map(function onMap(childViews) {
-  //   return h('div',
-  //     childViews
-  //   )
-  // })
-
+export default function create({h, children}) {
   const mounts = children.map(function onMap(childrenComponents) {
     return Object.keys(childrenComponents)
     .reduce(function onReduce(acc, childName) {
@@ -23,11 +8,13 @@ export default function create({h, mostOf, children}) {
   })
 
   const view = mounts.map(function onMap(mountsObject) {
-    return h('div',
+    // TODO: return directly after debugging is done.
+    const elm = h('div',
       Object.keys(mountsObject).map(function onMapObjToArr(mountKey) {
         return mountsObject[mountKey]
       })
     )
+    return elm
   })
 
   return {

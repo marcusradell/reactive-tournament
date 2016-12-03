@@ -1,6 +1,6 @@
 export default function create({objectMerge, updateStream}) {
   const initialState = {
-    value: 'Initial'
+    value: ''
   }
 
   const updateStreamReducer = updateStream

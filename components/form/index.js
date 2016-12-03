@@ -5,15 +5,16 @@ export default function create() {
   // TODO: send in fieldNames via create args.
   const fieldNames = [
     'email',
-    'password'
+    // 'password'
   ]
 
-  const inputs = fieldNames
-  .map(function onMap(fieldName) {
-    return Input({fieldName})
-  })
+  const inputsObject = fieldNames
+  .reduce(function onReduce(acc, fieldName) {
+    acc[fieldName] = Input({fieldName})
+    return acc
+  }, {})
 
-  const children = of(inputs)
+  const children = of(inputsObject)
 
   return {
     children

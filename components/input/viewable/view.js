@@ -10,6 +10,7 @@ export default function create({h, state, updateTrigger}) {
         props: {type: 'text'},
         on: {input: onUpdate}
       }),
+      // TODO: Remove div.
       h('div', [
         stateData.value.toString()
       ])

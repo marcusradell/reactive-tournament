@@ -17,32 +17,36 @@ export function create(domElm) {
   const formModel = FormModel()
   const form = Form({model: formModel})
 
-  input.view
+  // input.view
+  // .scan(function onScan(elm, nextElm) {
+  //   patch(elm, nextElm)
+  //   return nextElm
+  // }, domElm)
+  // .drain()
+
+  form.view
   .scan(function onScan(elm, nextElm) {
     patch(elm, nextElm)
     return nextElm
   }, domElm)
-  .tap(function onTap(data) {
-    console.log(data)
-  })
   .drain()
 
-  // form.children
-  // .zip(function combine(childrenObject, mountsObject) {
-  //   return {childrenObject, mountsObject}
-  // }, form.mounts)
-  // .map(function onMap({childrenObject, mountsObject}) {
-  //   debugger
-  //   return Object.keys(childrenObject)
-  //   .map(function onInnerMap(childKey) {
-  //     return childrenObject[childKey].view
-  //     .scan(function onScan(elm, nextElm) {
-  //       debugger
-  //       patch(elm, nextElm)
-  //       return nextElm
-  //     }, mountsObject[childKey])
-  //     .drain()
-  //   })
-  // })
-  // .drain()
+  form.children
+  .zip(function combine(childrenObject, mountsObject) {
+    return {childrenObject, mountsObject}
+  }, form.mounts)
+  .map(function onMap({childrenObject, mountsObject}) {
+    return Object.keys(childrenObject)
+    .map(function onInnerMap(childKey) {
+      return childrenObject[childKey].view
+      .scan(function onScan(elm, nextElm) {
+        console.log('elm:', elm)
+        console.log('nextElm:', nextElm)
+        patch(elm, nextElm)
+        return nextElm
+      }, mountsObject[childKey])
+      .drain()
+    })
+  })
+  .drain()
 }
