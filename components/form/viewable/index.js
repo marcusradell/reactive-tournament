@@ -1,20 +1,27 @@
 import h from 'snabbdom/h'
 import R from 'ramda'
+import {of as mostOf} from 'most'
 import Input from '../../input/viewable'
 import View from './view'
 
 export default function create({model}) {
-  const children = model.children.map(function onMap(inputModel) {
-    return Input({model: inputModel})
+  // TODO: Clean up logics.
+  const children = model.children.map(function onMap(inputModels) {
+    return inputModels.map(function onMapModelToViewable(inputModel) {
+      return Input({model: inputModel})
+    })
   })
 
-  const view = View({
-    h
+  const {view, mounts} = View({
+    h,
+    mostOf,
+    children
   })
 
   const viewable = {
     children,
-    view
+    view,
+    mounts
   }
 
   return R.merge(

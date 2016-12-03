@@ -4,11 +4,16 @@ export default function create({h, state, updateTrigger}) {
   }
 
   const view = state
-  .map(function onMap() {
-    return h('input', {
-      props: {type: 'text'},
-      on: {input: onUpdate}
-    })
+  .map(function onMap(stateData) {
+    return h('div', [
+      h('input', {
+        props: {type: 'text'},
+        on: {input: onUpdate}
+      }),
+      h('div', [
+        stateData.value.toString()
+      ])
+    ])
   })
 
   return view
