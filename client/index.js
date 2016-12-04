@@ -48,7 +48,7 @@ export function create(domElm) {
       const streamsArray = Object.keys(childrenObject)
       // For each child input, patch when view updates.
       .map(function onMapToPatchedElm(childKey) {
-        console.log(mountsObject[childKey].id)
+        console.log('child mounting onto id:', mountsObject[childKey].id)
         const mountDomElm = document
         .getElementById(mountsObject[childKey].id)
         return childrenObject[childKey].view

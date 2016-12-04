@@ -3,7 +3,7 @@ export default function create({h, uuid, children}) {
     return Object.keys(childrenComponents)
     .reduce(function onReduce(acc, childName) {
       const id = uuid.v4()
-      console.log(id)
+      console.log('generated id:', id)
       acc[childName] = {
         node: h('div',
           {props: {
@@ -20,6 +20,7 @@ export default function create({h, uuid, children}) {
   const view = mounts.map(function onMap(mountsObject) {
     return h('div',
       Object.keys(mountsObject).map(function onMapObjToArr(mountKey) {
+        console.log('form view mount id:', mountsObject[mountKey].id)
         return mountsObject[mountKey].node
       })
     )
