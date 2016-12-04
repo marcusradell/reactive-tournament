@@ -8,7 +8,7 @@ export default function create({h, pressTrigger}) {
       [
         'some text'
       ]
-    );
+    )
   }
 
   return view

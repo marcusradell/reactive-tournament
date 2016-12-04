@@ -20,6 +20,7 @@
     "ramda": "^0.22.1",
     "snabbdom": "^0.5.4",
     "style-loader": "^0.13.1",
+    "uuid": "^3.0.1",
     "webpack": "2.1.0-beta.27",
     "webpack-dev-server": "^1.16.2",
     "webpack-merge": "^0.18.0"

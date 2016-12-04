@@ -13,7 +13,6 @@ export default function create() {
     acc[fieldName] = Input({fieldName})
     return acc
   }, {})
-
   const children = of(inputsObject)
 
   return {

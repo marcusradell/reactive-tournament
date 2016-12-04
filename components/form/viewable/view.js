@@ -1,20 +1,28 @@
-export default function create({h, children}) {
+export default function create({h, uuid, children}) {
   const mounts = children.map(function onMap(childrenComponents) {
+    debugger
     return Object.keys(childrenComponents)
     .reduce(function onReduce(acc, childName) {
-      acc[childName] = h('div', [childName])
+      const id = uuid.v4()
+      acc[childName] = {
+        node: h('div',
+          {props: {
+            id
+          }},
+          `${childName} placeholder`
+        ),
+        id
+      }
       return acc
     }, {})
-  })
+  }).multicast()
 
   const view = mounts.map(function onMap(mountsObject) {
-    // TODO: return directly after debugging is done.
-    const elm = h('div',
+    return h('div',
       Object.keys(mountsObject).map(function onMapObjToArr(mountKey) {
-        return mountsObject[mountKey]
+        return mountsObject[mountKey].node
       })
     )
-    return elm
   })
 
   return {

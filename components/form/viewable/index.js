@@ -1,6 +1,6 @@
 import h from 'snabbdom/h'
 import R from 'ramda'
-import {of as mostOf} from 'most'
+import uuid from 'uuid'
 import Input from '../../input/viewable'
 import View from './view'
 import Children from './children'
@@ -13,7 +13,7 @@ export default function create({model}) {
 
   const {view, mounts} = View({
     h,
-    mostOf,
+    uuid,
     children
   })
 
