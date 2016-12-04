@@ -1,9 +1,9 @@
 export default function create({h, uuid, children}) {
   const mounts = children.map(function onMap(childrenComponents) {
-    debugger
     return Object.keys(childrenComponents)
     .reduce(function onReduce(acc, childName) {
       const id = uuid.v4()
+      console.log(id)
       acc[childName] = {
         node: h('div',
           {props: {
@@ -15,7 +15,7 @@ export default function create({h, uuid, children}) {
       }
       return acc
     }, {})
-  }).multicast()
+  })
 
   const view = mounts.map(function onMap(mountsObject) {
     return h('div',

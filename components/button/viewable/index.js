@@ -10,7 +10,7 @@ export default function create({model}) {
   const viewable = {
     view
   }
-  
+
   return R.merge(
     model,
     viewable
