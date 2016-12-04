@@ -16,6 +16,7 @@ export default function create({h, uuid, children}) {
       return acc
     }, {})
   })
+  .multicast()
 
   const view = mounts.map(function onMap(mountsObject) {
     return h('div',
