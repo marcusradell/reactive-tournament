@@ -30,7 +30,11 @@ export default function create ({
           {props: {htmlFor: name}},
         name),
         h('input', {
-          props: {type: 'text', name: name, value: stateData.value},
+          props: {
+            type: 'text',
+            name: name,
+            value: stateData.value
+          },
           on: {input: onUpdate}
         }),
         okButtonVNode,
