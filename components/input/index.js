@@ -3,7 +3,7 @@ import {merge as objectMerge} from 'ramda'
 import Behaviors from './behaviors'
 import State from './state'
 
-export default function create() {
+export default function create ({name}) {
   const behaviors = Behaviors({async})
   const state = State({
     objectMerge,
@@ -11,6 +11,7 @@ export default function create() {
   })
 
   return {
+    name,
     behaviors,
     state
   }

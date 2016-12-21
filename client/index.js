@@ -3,6 +3,7 @@
 import snabbdom from 'snabbdom'
 import eventListeners from 'snabbdom/modules/eventlisteners'
 import props from 'snabbdom/modules/props'
+import style from 'snabbdom/modules/style'
 import '../static/css/style.css'
 import FormModel from '../components/form'
 import Form from '../components/form/viewable'
@@ -10,10 +11,16 @@ import Form from '../components/form/viewable'
 export function create (domElm) {
   const patch = snabbdom.init([
     eventListeners,
-    props
+    props,
+    style
   ])
 
-  const formModel = FormModel()
+  const inputNames = [
+    'email',
+    'password'
+  ]
+
+  const formModel = FormModel({inputNames})
   const form = Form({model: formModel})
 
   form.view

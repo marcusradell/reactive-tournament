@@ -2,9 +2,10 @@ import h from 'snabbdom/h'
 import R from 'ramda'
 import View from './view'
 
-export default function create({model}) {
+export default function create ({model}) {
   const view = View({
     h,
+    name: model.name,
     state: model.state,
     updateTrigger: model.behaviors.triggers.update
   })
