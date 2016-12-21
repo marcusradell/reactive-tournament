@@ -1,5 +1,5 @@
 import h from 'snabbdom/h'
-import R from 'ramda'
+import {merge as ramdaMerge} from 'ramda'
 import Children from './children'
 import Button from '../../button/viewable'
 import View from './view'
@@ -22,7 +22,7 @@ export default function create ({model}) {
     view
   }
 
-  return R.merge(
+  return ramdaMerge(
     model,
     viewable
   )

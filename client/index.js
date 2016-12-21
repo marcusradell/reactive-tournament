@@ -1,32 +1,28 @@
-// TODO: remove document side-effect if possible.
-
-import snabbdom from 'snabbdom'
+import {init as snabbdomInit} from 'snabbdom'
 import eventListeners from 'snabbdom/modules/eventlisteners'
 import props from 'snabbdom/modules/props'
 import style from 'snabbdom/modules/style'
 import '../static/css/style.css'
-import FormModel from '../components/form'
-import Form from '../components/form/viewable'
+import RouterModel from '../components/router'
+import Router from '../components/router/viewable'
 
-export function create (domElm) {
-  const patch = snabbdom.init([
+export default function create (domElm) {
+  const patch = snabbdomInit([
     eventListeners,
     props,
     style
   ])
 
-  const inputNames = [
-    'email',
-    'password'
-  ]
+  const routerModel = RouterModel()
+  const router = Router({model: routerModel})
 
-  const formModel = FormModel({inputNames})
-  const form = Form({model: formModel})
-
-  form.view
+  router.view
   .scan(function onScan (elm, nextElm) {
     patch(elm, nextElm)
     return nextElm
   }, domElm)
   .drain()
+
+  // TODO: Remove
+  router.behaviors.triggers.setRoute('login')
 }

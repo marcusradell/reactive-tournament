@@ -1,3 +1,3 @@
-import * as client from '../client'
+import Client from '../client'
 
-client.create(document.querySelector('[data-app]'))
+Client(document.querySelector('[data-app]'))

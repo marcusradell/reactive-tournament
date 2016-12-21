@@ -24,14 +24,14 @@
     "snabbdom": "^0.5.4",
     "style-loader": "^0.13.1",
     "uuid": "^3.0.1",
-    "webpack": "2.1.0-beta.27",
+    "webpack": "2.2.0-rc.1",
     "webpack-dev-server": "^1.16.2",
-    "webpack-merge": "^0.18.0"
+    "webpack-merge": "^1.1.2"
   },
   "scripts": {
     "test": "jest --watch --color --coverage",
     "build:clean": "rm -rf build",
-    "build": "npm run build:clean && webpack --progress --profile --colors --display-error-details --display-cached",
+    "build": "NODE_ENV=production npm run build:clean && webpack -p --progress --profile --colors --display-error-details --display-cached",
     "start": "npm run build && node server/main.js",
     "watch": "nodemon --watch server --watch client -e ts -x 'npm start'",
     "dev": "webpack-dev-server --progress --colors"

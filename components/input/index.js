@@ -1,6 +1,6 @@
 import {merge as mostMerge} from 'most'
 import {async} from 'most-subject'
-import {merge as objectMerge} from 'ramda'
+import {merge as ramdaMerge} from 'ramda'
 import Button from '../button'
 import Behaviors from './behaviors'
 import State from './state'
@@ -14,7 +14,7 @@ export default function create ({name}) {
   const behaviors = Behaviors({async})
   const state = State({
     mostMerge,
-    objectMerge,
+    ramdaMerge,
     okBehavior: children.okButton.behaviors.streams.press,
     cancelBehavior: children.cancelButton.behaviors.streams.press,
     updateBehavior: behaviors.streams.update

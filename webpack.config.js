@@ -39,6 +39,6 @@ const config = {
   ]
 }
 
-module.exports = function onWebpack() {
+module.exports = function onWebpack () {
   return config
 }

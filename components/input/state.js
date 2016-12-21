@@ -1,6 +1,6 @@
 export default function create ({
   mostMerge,
-  objectMerge,
+  ramdaMerge,
   okBehavior,
   cancelBehavior,
   updateBehavior
@@ -13,7 +13,7 @@ export default function create ({
   const updateReducer = updateBehavior
   .map(function onMap (eventData) {
     return function reduce (stateData) {
-      return objectMerge(
+      return ramdaMerge(
         stateData,
         {value: eventData}
       )
@@ -23,7 +23,7 @@ export default function create ({
   const okReducer = okBehavior
   .map(function onMap () {
     return function reduce (stateData) {
-      return objectMerge(
+      return ramdaMerge(
         stateData,
         {savedValue: stateData.value}
       )
@@ -33,7 +33,7 @@ export default function create ({
   const cancelReducer = cancelBehavior
   .map(function onMap () {
     return function reduce (stateData) {
-      return objectMerge(
+      return ramdaMerge(
         stateData,
         {value: stateData.savedValue}
       )

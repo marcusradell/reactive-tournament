@@ -9,8 +9,13 @@ export default function create ({
   cancelTrigger
 }) {
   function onUpdate (event) {
-    if (event.keyCode === 13) {
-      return okTrigger()
+    switch (event.keyCode) {
+      case 13:
+        return okTrigger()
+      case 27:
+        return cancelTrigger()
+      default:
+        updateTrigger(event.target.value)
     }
     updateTrigger(event.target.value)
   }
@@ -35,7 +40,7 @@ export default function create ({
             name: name,
             value: stateData.value
           },
-          on: {input: onUpdate}
+          on: {keyup: onUpdate}
         }),
         okButtonVNode,
         cancelButtonVNode

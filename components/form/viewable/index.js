@@ -1,22 +1,19 @@
 import h from 'snabbdom/h'
-import R from 'ramda'
-import most from 'most'
-import uuid from 'uuid'
+import {merge as ramdaMerge} from 'ramda'
+import {combineArray as mostCombineArray} from 'most'
 import Input from '../../input/viewable'
 import View from './view'
 import Children from './children'
 
 export default function create ({model}) {
-  const children = Children({
+  const {children, childViews} = Children({
     Input,
     children: model.children
   })
-
-  const {view} = View({
+  const view = View({
     h,
-    most,
-    uuid,
-    children
+    mostCombineArray,
+    childViews
   })
 
   const viewable = {
@@ -24,7 +21,7 @@ export default function create ({model}) {
     view
   }
 
-  return R.merge(
+  return ramdaMerge(
     model,
     viewable
   )
