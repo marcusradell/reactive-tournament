@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 
-function appOnListen() {
+function appOnListen () {
   console.log('Server app started.')
 }
 

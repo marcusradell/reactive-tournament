@@ -1,1 +1,1 @@
-const server = require('./index')
+require('./index')

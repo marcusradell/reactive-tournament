@@ -2,5 +2,14 @@
   "presets": [
     "es2015",
     "es2017"
+  ],
+  "plugins": [
+    ["typecheck", {
+      "disable": {
+        "production": true
+      }
+    }],
+    "syntax-flow",
+    "transform-flow-strip-types"
   ]
 }
