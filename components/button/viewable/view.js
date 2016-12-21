@@ -1,15 +1,18 @@
-export default function create({h, pressTrigger}) {
-  function onClick() {
+export default function create ({
+  mostOf,
+  h,
+  name,
+  pressTrigger
+}) {
+  function onClick () {
     pressTrigger()
   }
 
-  function view() {
-    return h('button', {on: {click: onClick}},
-      [
-        'some text'
-      ]
-    )
-  }
+  const view = mostOf(
+    h('button',
+    {on: {click: onClick}},
+    [name])
+  )
 
   return view
 }

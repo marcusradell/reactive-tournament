@@ -5,7 +5,7 @@ export default function create ({h, most, uuid, children}) {
       return childrenComponents[key].view
     })
     return most.combineArray(function onCombine (...childVNodes) {
-      return h('form',
+      return h('div',
         [...childVNodes]
       )
     }, childrenComponentViewsArray)

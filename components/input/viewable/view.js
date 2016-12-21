@@ -1,10 +1,22 @@
-export default function create ({h, name, state, updateTrigger}) {
+export default function create ({
+  h,
+  name,
+  state,
+  updateTrigger,
+  okButtonView,
+  okTrigger,
+  cancelButtonView,
+  cancelTrigger
+}) {
   function onUpdate (event) {
+    if (event.keyCode === 13) {
+      return okTrigger()
+    }
     updateTrigger(event.target.value)
   }
 
   const view = state
-  .map(function onMap (stateData) {
+  .combine(function onCombine (stateData, okButtonVNode, cancelButtonVNode) {
     return h('div',
       {
         style: {
@@ -18,11 +30,15 @@ export default function create ({h, name, state, updateTrigger}) {
           {props: {htmlFor: name}},
         name),
         h('input', {
-          props: {type: 'text', name: name},
+          props: {type: 'text', name: name, value: stateData.value},
           on: {input: onUpdate}
-        })
+        }),
+        okButtonVNode,
+        cancelButtonVNode
       ])
-  })
+  },
+  okButtonView,
+  cancelButtonView)
 
   return view
 }
