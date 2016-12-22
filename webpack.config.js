@@ -1,14 +1,18 @@
 const {resolve} = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
 const config = {
-  entry: './client/main.js',
+  entry: {
+    main: './client/main.js',
+    vendor: ['most', 'snabbdom', 'ramda']
+  },
   output: {
     path: resolve(__dirname, 'build'),
     pathinfo: !isProduction,
-    filename: 'bundle.[chunkhash].js'
+    filename: '[chunkhash].[name].js'
   },
   context: __dirname,
   devtool: isProduction ? 'source-map' : 'eval',
@@ -35,6 +39,9 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './static/index.html'
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor', 'manifest']
     })
   ]
 }

@@ -24,5 +24,8 @@ export default function create (domElm) {
   .drain()
 
   // TODO: Remove
-  router.behaviors.triggers.setRoute('login')
+  const route = window.location.hash
+  ? window.location.hash.slice(1)
+  : 'login'
+  router.behaviors.triggers.setRoute(route)
 }
