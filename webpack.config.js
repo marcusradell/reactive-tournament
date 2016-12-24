@@ -7,7 +7,9 @@ const isProduction = process.env.NODE_ENV === 'production'
 const config = {
   entry: {
     main: './client/main.js',
-    vendor: ['most', 'snabbdom', 'ramda']
+    most: 'most',
+    ramda: 'ramda',
+    snabbdom: 'snabbdom'
   },
   output: {
     path: resolve(__dirname, 'build'),
@@ -32,12 +34,30 @@ const config = {
       }
     ]
   },
+  resolve: {
+    extensions: ['.min.js', '.js', '.css'],
+    alias: {
+      most: 'most/dist/most.min.js',
+      ramda: 'ramda/dist/ramda.min.js'
+    }
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './static/index.html'
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest']
+      names: ['most', 'ramda', 'snabbdom', 'manifest']
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        unused: true,
+        dead_code: true,
+        drop_console: true
+      },
+      output: {
+        comments: false
+      }
     })
   ]
 }

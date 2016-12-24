@@ -31,7 +31,7 @@
     "build": "NODE_ENV=production npm run build:clean && webpack -p --progress --profile --colors --display-error-details --display-cached",
     "start": "npm run build && node server/main.js",
     "watch": "nodemon --watch server --watch client -e ts -x 'npm start'",
-    "dev": "webpack-dev-server --inline --content-base build/ --progress --colors"
+    "dev": "webpack-dev-server --inline --content-base build/ --progress --colors --profile --display-error-details --display-cached"
   },
   "repository": {
     "type": "git",
