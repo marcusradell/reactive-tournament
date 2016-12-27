@@ -26,9 +26,20 @@ export default function create (domElm) {
     eventSource: window,
     selectPath
   })
+
+  function setRouteSinkEffect (route) {
+    window.location.href = `/#${route}`
+  }
+
   const initialRoute = selectPath()
-  const routerModel = RouterModel({initialRoute, setRouteSource})
+  const routerModel = RouterModel({
+    initialRoute,
+    setRouteSource,
+    setRouteSinkEffect
+  })
   const router = Router({model: routerModel})
+
+  window.router = router
 
   Renderer({
     patch,

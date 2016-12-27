@@ -1,9 +1,9 @@
-export default function create ({initialRoute, ramdaMerge, setRouteBehavior}) {
+export default function create ({initialRoute, ramdaMerge, setRouteSuccess}) {
   const initialState = {
     route: initialRoute
   }
 
-  const setRouteReducer = setRouteBehavior
+  const setRouteSuccessReducer = setRouteSuccess
   .map(function onMap (route) {
     return function reduce (stateObject) {
       return ramdaMerge(
@@ -13,7 +13,7 @@ export default function create ({initialRoute, ramdaMerge, setRouteBehavior}) {
     }
   })
 
-  const state = setRouteReducer
+  const state = setRouteSuccessReducer
   .scan(function onScan (stateObject, reduce) {
     return reduce(stateObject)
   }, initialState)
