@@ -1,6 +1,6 @@
-export default function create ({ramdaMerge, setRouteBehavior}) {
+export default function create ({initialRoute, ramdaMerge, setRouteBehavior}) {
   const initialState = {
-    route: 'landing'
+    route: initialRoute
   }
 
   const setRouteReducer = setRouteBehavior

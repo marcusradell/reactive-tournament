@@ -7,6 +7,7 @@ import '../static/css/style.css'
 import RouterModel from '../components/router'
 import Router from '../components/router/viewable'
 import Renderer from './renderer'
+import SetRouteSource from './set-route-source'
 
 export default function create (domElm) {
   const patch = snabbdomInit([
@@ -15,7 +16,18 @@ export default function create (domElm) {
     style
   ])
 
-  const routerModel = RouterModel()
+  function selectPath () {
+    return window.location.hash.slice(1)
+  }
+
+  const setRouteSource = SetRouteSource({
+    mostFromEvent,
+    eventName: 'hashchange',
+    eventSource: window,
+    selectPath
+  })
+  const initialRoute = selectPath()
+  const routerModel = RouterModel({initialRoute, setRouteSource})
   const router = Router({model: routerModel})
 
   Renderer({
@@ -23,18 +35,4 @@ export default function create (domElm) {
     domElm,
     view: router.view
   })
-
-  // TODO: Refactor
-  mostFromEvent('hashchange', window)
-  .forEach(function onForEach (data) {
-    const route = window.location.hash
-    ? window.location.hash.slice(1)
-    : 'login'
-    router.behaviors.triggers.setRoute(route)
-  })
-
-  const route = window.location.hash
-  ? window.location.hash.slice(1)
-  : 'login'
-  router.behaviors.triggers.setRoute(route)
 }

@@ -19,6 +19,7 @@
     "neo4j-driver": "^1.1.0-M02",
     "nodemon": "^1.11.0",
     "ramda": "^0.22.1",
+    "serviceworker-webpack-plugin": "^0.1.7",
     "snabbdom": "^0.5.4",
     "style-loader": "^0.13.1",
     "webpack": "2.2.0-rc.1",

@@ -2,8 +2,11 @@ import Landing from './landing'
 import Login from './login'
 
 export default function create () {
+  const landing = Landing()
+
   return {
-    landing: Landing(),
+    default: landing,
+    landing,
     login: Login()
   }
 }

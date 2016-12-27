@@ -7,9 +7,12 @@ const isProduction = process.env.NODE_ENV === 'production'
 const config = {
   entry: {
     main: './client/main.js',
-    most: 'most',
-    ramda: 'ramda',
-    snabbdom: 'snabbdom'
+    vendor: [
+      'most-subject',
+      'most',
+      'ramda',
+      'snabbdom'
+    ]
   },
   output: {
     path: resolve(__dirname, 'build'),
@@ -47,19 +50,9 @@ const config = {
     }),
     // TODO: Try to fix commons chunk filename argument to minify further.
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['most', 'ramda', 'snabbdom', 'manifest']
+      names: ['vendor', 'manifest']
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        unused: true,
-        dead_code: true,
-        drop_console: true
-      },
-      output: {
-        comments: false
-      }
-    })
+    
   ]
 }
 
