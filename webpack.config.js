@@ -45,6 +45,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: './static/index.html'
     }),
+    // TODO: Try to fix commons chunk filename argument to minify further.
     new webpack.optimize.CommonsChunkPlugin({
       names: ['most', 'ramda', 'snabbdom', 'manifest']
     }),
