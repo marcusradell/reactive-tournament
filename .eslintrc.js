@@ -6,5 +6,8 @@ module.exports = {
     "plugins": [
         "standard",
         "promise"
-    ]
+    ],
+    "env": {
+        "jest": true
+    }
 };
