@@ -12,12 +12,8 @@ module.exports = function onWallaby (wallaby) {
       runner: 'node'
     },
     testFramework: 'jest',
-    setup: function (wallaby) {
-      wallaby.testFramework.configure({
-        'transform': {
-          '^.+\\.js$': '<rootDir>/node_modules/babel-jest'
-        }
-      })
+    compilers: {
+      '**/*.js': wallaby.compilers.babel()
     },
     debug: true
   }

@@ -47,6 +47,7 @@
   "homepage": "https://github.com/marcusnielsen/reactive-tournament#readme",
   "devDependencies": {
     "babel-jest": "^18.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
     "babel-polyfill": "^6.20.0",
     "eslint": "^3.12.2",
     "eslint-config-standard": "^6.2.1",
