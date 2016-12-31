@@ -1,6 +1,7 @@
 module.exports = {
     "extends": [
-        "standard"
+        "standard",
+        "standard-react"
     ],
     "installedESLint": true,
     "plugins": [
