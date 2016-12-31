@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-export default function create ({state$, WrappedComponent}) {
-  return class Connect extends React.Component {
+export default function create ({state$, Render}) {
+  return class ReactObserver extends React.Component {
     componentWillMount () {
       this.subscription = state$.subscribe({
         next: (stateData) => {
@@ -19,7 +19,7 @@ export default function create ({state$, WrappedComponent}) {
     render () {
       return (
         this.state &&
-        <WrappedComponent state={this.state} />
+        <Render state={this.state} />
       )
     }
   }

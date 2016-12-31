@@ -6,7 +6,6 @@ import View from './view'
 
 export default function create ({model}) {
   const children = Children({Button, children: model.children})
-
   const view = View({
     h,
     name: model.name,

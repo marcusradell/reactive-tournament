@@ -1,7 +1,8 @@
 export default function create ({
+  ReactObserver,
   React,
   name,
-  state,
+  state$,
   updateTrigger,
   OkButtonView,
   okTrigger,
@@ -21,7 +22,7 @@ export default function create ({
     updateTrigger(event.target.value)
   }
 
-  const view = ({ state }) => (
+  const Render = ({ state }) => (
     <div>
       <label htmlFor={name}>
         {name}
@@ -38,11 +39,16 @@ export default function create ({
     </div>
   )
 
-  view.propTypes = {
+  Render.propTypes = {
     state: React.PropTypes.shape({
       value: React.PropTypes.string.isRequired
     })
   }
 
-  return view
+  const observedView = ReactObserver({
+    state$,
+    Render
+  })
+
+  return observedView
 }
