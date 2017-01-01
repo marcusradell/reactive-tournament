@@ -1,19 +1,19 @@
 import React from 'react'
 import {merge as ramdaMerge} from 'ramda'
 import Input from '../../input/react-viewable'
-import View from './view'
+import DefaultView from './view'
 import Children from './children'
 import ReactObserver from '../../../utils/react-observer'
 
-export default function create ({model}) {
-  const {children, childViews} = Children({
+export default function create ({model, View = DefaultView}) {
+  const children = Children({
     Input,
     ReactObserver,
     children: model.children
   })
   const view = View({
     React,
-    childViews
+    children
   })
 
   const viewable = {
