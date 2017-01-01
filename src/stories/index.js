@@ -39,10 +39,7 @@ storiesOf('components', module)
     const inputModel = InputModel({name: 'input-name'})
     const inputViewable = InputViewable({ model: inputModel })
 
-    const Input = ReactObserver({
-      state$: inputModel.state,
-      WrappedComponent: inputViewable.view
-    })
+    const Input = inputViewable.view
 
     return (
       <Input />

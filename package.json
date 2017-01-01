@@ -14,6 +14,7 @@
   "dependencies": {
     "most": "^1.1.1",
     "most-subject": "^5.3.0",
+    "now": "^0.37.1",
     "ramda": "^0.23.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
@@ -21,7 +22,8 @@
     "snabbdom": "^0.5.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "start-storybook -p 9009 -s public",
+    "start-start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
