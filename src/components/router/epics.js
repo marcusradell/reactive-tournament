@@ -4,7 +4,6 @@ export default function create ({
 }) {
   const setRouteSuccess = setRouteBehavior
   .tap(function onDo (route) {
-    debugger
     setRouteSinkEffect(route)
   })
 
