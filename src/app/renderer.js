@@ -1,8 +1,3 @@
-export default function create ({patch, domElm, view}) {
-  view
-  .scan(function onScan (elm, nextElm) {
-    patch(elm, nextElm)
-    return nextElm
-  }, domElm)
-  .drain()
+export default function create ({React, render, domElm, View}) {
+  render(<View />, domElm)
 }

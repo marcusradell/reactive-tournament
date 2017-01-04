@@ -1,11 +1,15 @@
 export default function create ({
-  h,
-  mostCombineArray,
-  childViews
+  React,
+  children
 }) {
-  return mostCombineArray(function onCombine (...childVNodes) {
-    return h('div',
-      [...childVNodes]
-    )
-  }, childViews)
+  return () => (
+    <div>
+      {
+        Object.keys(children).reduce((acc, key) => {
+          const Child = children[key].view
+          return [...acc, <Child key={key} />]
+        }, [])
+      }
+    </div>
+  )
 }

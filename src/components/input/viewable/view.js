@@ -1,53 +1,56 @@
 export default function create ({
-  h,
+  ReactObserver,
+  React,
   name,
-  state,
+  state$,
   updateTrigger,
-  okButtonView,
+  OkButtonView,
   okTrigger,
-  cancelButtonView,
+  CancelButtonView,
   cancelTrigger
 }) {
-  function onUpdate (event) {
+  function onKeyPress (event) {
     switch (event.keyCode) {
       case 13:
         return okTrigger()
       case 27:
         return cancelTrigger()
       default:
-        updateTrigger(event.target.value)
+        return
     }
+  }
+
+  function onChange (event) {
     updateTrigger(event.target.value)
   }
 
-  const view = state
-  .combine(function onCombine (stateData, okButtonVNode, cancelButtonVNode) {
-    return h('div',
-      {
-        style: {
-          opacity: '0',
-          transition: 'opacity 1s',
-          delayed: {opacity: '1'}
-        }
-      },
-      [
-        h('label',
-          {props: {htmlFor: name}},
-        name),
-        h('input', {
-          props: {
-            type: 'text',
-            name: name,
-            value: stateData.value
-          },
-          on: {keyup: onUpdate}
-        }),
-        okButtonVNode,
-        cancelButtonVNode
-      ])
-  },
-  okButtonView,
-  cancelButtonView)
+  const Render = ({ state }) => (
+    <div>
+      <label htmlFor={name}>
+        {name}
+      </label>
+      <input
+        type='text'
+        name={name}
+        value={state.value}
+        onChange={onChange}
+        onKeyDown={onKeyPress}
+      />
+      <OkButtonView />
+      <CancelButtonView />
+    </div>
+  )
 
-  return view
+  Render.propTypes = {
+    state: React.PropTypes.shape({
+      value: React.PropTypes.string.isRequired
+    })
+  }
+
+  const observedView = ReactObserver({
+    state$,
+    Render
+  })
+
+  return observedView
 }

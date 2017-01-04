@@ -1,12 +1,10 @@
-import {of as mostOf} from 'most'
-import h from 'snabbdom/h'
+import React from 'react'
 import {merge as ramdaMerge} from 'ramda'
 import View from './view'
 
 export default function create ({model}) {
   const view = View({
-    mostOf,
-    h,
+    React,
     name: model.name,
     pressTrigger: model.behaviors.triggers.press
   })

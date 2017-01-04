@@ -1,6 +1,5 @@
 export default function create ({
-  mostOf,
-  h,
+  React,
   name,
   pressTrigger
 }) {
@@ -8,10 +7,10 @@ export default function create ({
     pressTrigger()
   }
 
-  const view = mostOf(
-    h('button',
-    {on: {click: onClick}},
-    [name])
+  const view = () => (
+    <button onClick={onClick}>
+      {name}
+    </button>
   )
 
   return view

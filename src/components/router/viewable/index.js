@@ -1,16 +1,18 @@
+import React from 'react'
 import {merge as ramdaMerge} from 'ramda'
-import Pages from '../../../pages'
+import Pages from '../../pages/viewable'
 import View from './view'
 
 export default function create ({model}) {
-  const pages = Pages()
+  const pages = Pages({model: model.children.pages})
+  const children = {pages}
   const view = View({
-    pages,
-    state: model.state
+    React,
+    PagesView: pages.view
   })
 
   const viewable = {
-    pages,
+    children,
     view
   }
 
