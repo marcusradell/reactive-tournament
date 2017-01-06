@@ -1,12 +1,12 @@
-import FormModel from '../../form'
+import FormModel from '../../entity-form'
 
 export default function create () {
-  const inputNames = [
-    'email',
-    'password'
+  const inputSchema = [
+    {name: 'email', type: 'text'},
+    {name: 'password', type: 'password'}
   ]
 
-  const form = FormModel({inputNames})
+  const form = FormModel({schema: inputSchema})
   const children = {form}
 
   return {

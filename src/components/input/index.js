@@ -5,10 +5,10 @@ import Button from '../button'
 import Behaviors from './behaviors'
 import State from './state'
 
-export default function create ({name}) {
+export default function create ({name, type = 'text'}) {
   const children = {
-    okButton: Button({name: 'OK'}),
-    cancelButton: Button({name: 'cancel'})
+    okButton: Button({name: 'save', variant: 'success'}),
+    cancelButton: Button({name: 'cancel', variant: 'error'})
   }
 
   const behaviors = Behaviors({async})
@@ -22,6 +22,7 @@ export default function create ({name}) {
 
   return {
     name,
+    type,
     children,
     behaviors,
     state

@@ -5,22 +5,20 @@ import Landing from '../landing/viewable'
 import Login from '../login/viewable'
 import View from './view'
 
-// TODO: Make model that exposes child components
 export default function create ({model}) {
   const landing = Landing({model: model.children.landing})
   const login = Login({model: model.children.login})
 
   const children = {
     landing,
-    login,
-    // TODO: duplication. Refactor to a key string.
-    default: landing
+    login
   }
 
   const view = View({
     React,
     ReactObserver,
     children,
+    defaultChild: model.defaultChild,
     state$: model.state$
   })
 

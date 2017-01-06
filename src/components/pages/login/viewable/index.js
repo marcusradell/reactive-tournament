@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from '../../../form/viewable'
+import Form from '../../../entity-form/viewable'
 import View from './view'
 
 export default function create ({model}) {

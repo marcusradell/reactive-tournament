@@ -6,13 +6,13 @@ export default function create ({routeState$}) {
   const state$ = routeState$
   const landing = Landing()
   const children = {
-    default: landing,
     landing,
     login: Login()
   }
-
+  const defaultChild = 'login'
   return {
     state$,
-    children
+    children,
+    defaultChild
   }
 }
