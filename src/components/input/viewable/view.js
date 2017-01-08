@@ -1,11 +1,12 @@
+// @TODO: Rename all files to .jsx if webpack handles it.
 export default function create ({
-  ReactObserver,
+  ConnectObserver,
   React,
   css,
   StyleSheet,
   name,
   type,
-  state$,
+  state_,
   updateTrigger,
   OkButtonView,
   okTrigger,
@@ -54,7 +55,7 @@ export default function create ({
     updateTrigger(event.target.value)
   }
 
-  const Render = ({ state }) => (
+  const view = ({ state }) => (
     <div className={css(styles.component)}>
       <label className={css(styles.labelElement)} htmlFor={name}>
         {name}
@@ -75,16 +76,14 @@ export default function create ({
     </div>
   )
 
-  Render.propTypes = {
+  view.propTypes = {
     state: React.PropTypes.shape({
       value: React.PropTypes.string.isRequired
     })
   }
 
-  const observedView = ReactObserver({
-    state$,
-    Render
+  return ConnectObserver({
+    state_,
+    view
   })
-
-  return observedView
 }

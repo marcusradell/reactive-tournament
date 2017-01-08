@@ -1,18 +1,18 @@
 import {async} from 'most-subject'
 import {merge as ramdaMerge} from 'ramda'
-import Behaviors from './behaviors'
+import Actions from './actions'
 import State from './state'
 
 export default function create ({routes}) {
-  const behaviors = Behaviors({async})
+  const actions = Actions({async})
   const state = State({
     ramdaMerge,
-    selectBehavior: behaviors.streams.select
+    selectBehavior: actions.streams.select
   })
 
   return {
     routes,
-    behaviors,
+    actions,
     state
   }
 }

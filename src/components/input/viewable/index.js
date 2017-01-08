@@ -1,7 +1,7 @@
 import React from 'react'
 import {css, StyleSheet} from 'aphrodite'
 import {merge as ramdaMerge} from 'ramda'
-import ReactObserver from '../../../utils/react-observer'
+import ConnectObserver from '../../../utils/connect-observer'
 import Children from './children'
 import Button from '../../button/viewable'
 import View from './view'
@@ -12,15 +12,15 @@ export default function create ({model}) {
     React,
     css,
     StyleSheet,
-    ReactObserver,
+    ConnectObserver,
     name: model.name,
     type: model.type,
-    state$: model.state,
-    updateTrigger: model.behaviors.triggers.update,
+    state_: model.state_,
+    updateTrigger: model.actions.triggers.update,
     OkButtonView: children.okButton.view,
-    okTrigger: children.okButton.behaviors.triggers.press,
+    okTrigger: children.okButton.actions.triggers.press,
     CancelButtonView: children.cancelButton.view,
-    cancelTrigger: children.cancelButton.behaviors.triggers.press
+    cancelTrigger: children.cancelButton.actions.triggers.press
   })
   const viewable = {
     children,

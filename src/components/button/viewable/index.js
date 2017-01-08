@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, css } from 'aphrodite'
 import {merge as ramdaMerge} from 'ramda'
-import ReactObserver from '../../../utils/react-observer'
+import ConnectObserver from '../../../utils/connect-observer'
 import View from './view'
 
 export default function create ({model}) {
@@ -9,11 +9,11 @@ export default function create ({model}) {
     React,
     StyleSheet,
     css,
-    ReactObserver,
-    stateStream: model.state,
+    ConnectObserver,
+    state_: model.state_,
     labels: model.labels,
-    pressTrigger: model.behaviors.triggers.press,
-    pressStream: model.behaviors.streams.press
+    pressTrigger: model.actions.triggers.press,
+    press_: model.actions.streams.press
   })
   const viewable = {
     view

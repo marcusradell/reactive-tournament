@@ -2,8 +2,8 @@ import Landing from './landing'
 import Login from './login'
 
 // TODO: Make a component
-export default function create ({routeState$}) {
-  const state$ = routeState$
+export default function create ({routerState$}) {
+  const state$ = routerState$
   const landing = Landing()
   const children = {
     landing,

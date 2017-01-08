@@ -1,5 +1,7 @@
-export default function create ({React, PagesView}) {
+export default function create ({React, state$, PagesView}) {
   return () => (
-    <PagesView />
+    <div>
+      <PagesView />
+    </div>
   )
 }

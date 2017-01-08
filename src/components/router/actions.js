@@ -5,14 +5,14 @@ export default function create ({mostAsync, setRouteSource}) {
     setRouteSubject.next(route)
   }
 
-  const setRouteStream = setRouteSubject.merge(setRouteSource)
+  const setRoute_ = setRouteSubject.merge(setRouteSource)
 
   return {
     triggers: {
       setRoute: setRouteTrigger
     },
     streams: {
-      setRoute: setRouteStream
+      setRoute: setRoute_
     }
   }
 }

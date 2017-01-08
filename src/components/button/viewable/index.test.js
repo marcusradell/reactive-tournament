@@ -5,5 +5,5 @@ test('create viewable', () => {
   const model = Model({name: 'a'})
   const viewable = Button({model})
   expect(Object.keys(viewable))
-  .toEqual(['name', 'behaviors', 'view'])
+  .toEqual(['name', 'actions', 'view'])
 })

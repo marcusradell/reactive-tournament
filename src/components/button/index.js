@@ -1,13 +1,13 @@
 import {async} from 'most-subject'
 import {merge as ramdaMerge} from 'ramda'
-import Behaviors from './behaviors'
+import Actions from './actions'
 import State from './state'
 
 export default function create ({name, variant}) {
-  const behaviors = Behaviors({async})
-  const state = State({
+  const actions = Actions({async})
+  const state_ = State({
     ramdaMerge,
-    pressStream: behaviors.streams.press
+    press_: actions.streams.press
   })
 
   const labels = {
@@ -17,7 +17,7 @@ export default function create ({name, variant}) {
 
   return {
     labels,
-    behaviors,
-    state
+    actions,
+    state_
   }
 }

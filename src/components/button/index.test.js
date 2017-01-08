@@ -9,5 +9,5 @@ test('button factory returns name', () => {
 test('button factory returns props', () => {
   const name = 'a'
   const button = Button({name})
-  expect(Object.keys(button)).toEqual(['name', 'behaviors'])
+  expect(Object.keys(button)).toEqual(['name', 'actions'])
 })

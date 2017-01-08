@@ -2,10 +2,10 @@
 
 import React from 'react'
 
-export default function create ({state$, Render}) {
-  return class ReactObserver extends React.Component {
-    componentWillMount () {
-      this.subscription = state$.subscribe({
+export default function create ({state_, view: View}) {
+  return class ConnectObserver extends React.Component {
+    componentDidMount () {
+      this.subscription = state_.subscribe({
         next: (stateData) => {
           this.setState(stateData)
         }
@@ -19,7 +19,7 @@ export default function create ({state$, Render}) {
     render () {
       return (
         this.state &&
-        <Render state={this.state} />
+        <View state={this.state} />
       )
     }
   }

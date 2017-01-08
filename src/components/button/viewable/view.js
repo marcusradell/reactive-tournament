@@ -2,11 +2,11 @@ export default function create ({
   React,
   StyleSheet,
   css,
-  ReactObserver,
-  stateStream,
+  ConnectObserver,
+  state_,
   labels: {name, variant},
   pressTrigger,
-  pressStream
+  press_
 }) {
   const colorVariants = {
     success: 'green',
@@ -45,11 +45,11 @@ export default function create ({
     pressTrigger()
   }
 
-  const Render = ({state}) => (
+  const view = ({state}) => (
     <button className={css(styles.component, state.isRecentlyPressed ? styles.recentlyPressed : styles.notRecentlyPressed)} onClick={onClick}>
       {name}
     </button>
   )
 
-  return ReactObserver({Render, state$: stateStream})
+  return ConnectObserver({view, state_: state_})
 }

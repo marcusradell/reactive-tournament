@@ -1,11 +1,7 @@
-export default function create({async}) {
+export default function create ({async}) {
   const updateTriggerSubject = async()
 
-  function updateTrigger(eventData) {
-    if (typeof eventData !== 'string') {
-      throw new Error('updateTrigger called with wrong type.')
-    }
-
+  function updateTrigger (eventData) {
     updateTriggerSubject.next(eventData)
   }
 

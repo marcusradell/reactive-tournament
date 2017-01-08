@@ -1,5 +1,5 @@
-export default function create ({name, behaviors, storeEffect}) {
-  const create = behaviors.streams.create
+export default function create ({name, actions, storeEffect}) {
+  const create = actions.streams.create
   .flatMap(() => (
     // @TODO: Don't destructure possible hot code paths.
     storeEffect.send({
@@ -11,18 +11,18 @@ export default function create ({name, behaviors, storeEffect}) {
   ))
   .tap((responseData) => (
     responseData.header.status === 'resolved'
-    ? behaviors.triggers.createResolved()
-    : behaviors.triggers.createRejected()
+    ? actions.triggers.createResolved()
+    : actions.triggers.createRejected()
   ))
 
-  const read = behaviors.streams.read
+  const read = actions.streams.read
   .merge(
-    behaviors.streams.createResolved,
-    behaviors.streams.createRejected,
-    behaviors.streams.updateResolved,
-    behaviors.streams.updateRejected,
-    behaviors.streams.removeResolved,
-    behaviors.streams.removeRejected,
+    actions.streams.createResolved,
+    actions.streams.createRejected,
+    actions.streams.updateResolved,
+    actions.streams.updateRejected,
+    actions.streams.removeResolved,
+    actions.streams.removeRejected,
   )
   .flatMap(() => (
     storeEffect.send({
@@ -35,11 +35,11 @@ export default function create ({name, behaviors, storeEffect}) {
   // @TODO: switch here?
   .tap((responseData) => (
     responseData.header.status === 'resolved'
-    ? behaviors.triggers.readResolved()
-    : behaviors.triggers.readRejected()
+    ? actions.triggers.readResolved()
+    : actions.triggers.readRejected()
   ))
 
-  const update = behaviors.streams.update
+  const update = actions.streams.update
   .chain((body) => (
     storeEffect.send({
       header: {
@@ -51,11 +51,11 @@ export default function create ({name, behaviors, storeEffect}) {
   ))
   .tap((responseData) => (
     responseData.header.status === 'resolved'
-    ? behaviors.triggers.updateResolved()
-    : behaviors.triggers.updateRejected()
+    ? actions.triggers.updateResolved()
+    : actions.triggers.updateRejected()
   ))
 
-  const remove = behaviors.streams.remove
+  const remove = actions.streams.remove
   .chain((body) => (
     storeEffect.send({
       header: {
@@ -67,8 +67,8 @@ export default function create ({name, behaviors, storeEffect}) {
   ))
   .tap((responseData) => (
     responseData.header.status === 'resolved'
-    ? behaviors.triggers.removeResolved()
-    : behaviors.triggers.removeRejected()
+    ? actions.triggers.removeResolved()
+    : actions.triggers.removeRejected()
   ))
 
   return {

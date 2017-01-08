@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactObserver from '../../../utils/react-observer'
+import ConnectObserver from '../../../utils/connect-observer'
 import {merge as ramdaMerge} from 'ramda'
 import Landing from '../landing/viewable'
 import Login from '../login/viewable'
@@ -16,7 +16,7 @@ export default function create ({model}) {
 
   const view = View({
     React,
-    ReactObserver,
+    ConnectObserver,
     children,
     defaultChild: model.defaultChild,
     state$: model.state$

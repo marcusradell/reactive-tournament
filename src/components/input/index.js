@@ -2,7 +2,7 @@ import {merge as mostMerge} from 'most'
 import {async} from 'most-subject'
 import {merge as ramdaMerge} from 'ramda'
 import Button from '../button'
-import Behaviors from './behaviors'
+import Actions from './actions'
 import State from './state'
 
 export default function create ({name, type = 'text'}) {
@@ -11,20 +11,20 @@ export default function create ({name, type = 'text'}) {
     cancelButton: Button({name: 'cancel', variant: 'error'})
   }
 
-  const behaviors = Behaviors({async})
-  const state = State({
+  const actions = Actions({async})
+  const state_ = State({
     mostMerge,
     ramdaMerge,
-    okBehavior: children.okButton.behaviors.streams.press,
-    cancelBehavior: children.cancelButton.behaviors.streams.press,
-    updateBehavior: behaviors.streams.update
+    okBehavior: children.okButton.actions.streams.press,
+    cancelBehavior: children.cancelButton.actions.streams.press,
+    updateBehavior: actions.streams.update
   })
 
   return {
     name,
     type,
     children,
-    behaviors,
-    state
+    actions,
+    state_
   }
 }

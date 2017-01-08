@@ -2,17 +2,18 @@ function getPage (route, children, defaultChild) {
   return children[route] ? children[route].view : children[defaultChild].view
 }
 
-export default function create ({React, ReactObserver, state$, children, defaultChild}) {
+export default function create ({
+  React,
+  ConnectObserver,
+  state_, children, defaultChild}) {
   const Render = ({state}) => (
     <div>
       {React.createElement(getPage(state.route, children, defaultChild))}
     </div>
   )
 
-  const observedView = ReactObserver({
-    state$,
+  return ConnectObserver({
+    state_,
     Render
   })
-
-  return observedView
 }
