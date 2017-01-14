@@ -19,7 +19,7 @@ export default function create ({model}) {
     ConnectObserver,
     children,
     defaultChild: model.defaultChild,
-    state$: model.state$
+    state_: model.state_
   })
 
   const viewable = {

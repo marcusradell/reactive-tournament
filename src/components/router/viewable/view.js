@@ -1,4 +1,4 @@
-export default function create ({React, state$, PagesView}) {
+export default function create ({React, PagesView}) {
   return () => (
     <div>
       <PagesView />

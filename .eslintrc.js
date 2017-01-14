@@ -10,5 +10,8 @@ module.exports = {
     ],
     "env": {
         "jest": true
+    },
+    "rules": {
+        "react/prop-types": "off"
     }
 };

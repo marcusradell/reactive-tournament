@@ -11,12 +11,12 @@ export default function create ({initialRoute, setRouteSource, setRouteSinkEffec
     setRouteSinkEffect,
     setRouteBehavior: actions.streams.setRoute
   })
-  const state$ = State({
+  const state_ = State({
     initialRoute,
     ramdaMerge,
     setRouteSuccess: epics.setRouteSuccess
   })
-  const pages = Pages({routerState$: state$})
+  const pages = Pages({routerState_: state_})
   const children = {
     pages
   }
@@ -25,6 +25,6 @@ export default function create ({initialRoute, setRouteSource, setRouteSinkEffec
     children,
     actions,
     epics,
-    state$
+    state_
   }
 }

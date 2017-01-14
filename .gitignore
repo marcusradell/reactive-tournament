@@ -8,8 +8,12 @@ coverage
 
 # production
 build
+storybook-static
+.storybook
 
 # misc
 .DS_Store
 .env
 npm-debug.log
+.next
+.vscode

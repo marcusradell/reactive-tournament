@@ -1,54 +1,50 @@
 export default function create ({
   React,
-  StyleSheet,
-  css,
+  styled,
   ConnectObserver,
   state_,
   labels: {name, variant},
   pressTrigger,
   press_
 }) {
-  const colorVariants = {
-    success: 'green',
-    warning: 'orange',
-    error: 'red',
-    successActive: 'darkgreen',
-    warningActive: 'darkorange',
-    errorActive: 'darkred'
-  }
-
-  const styles = StyleSheet.create({
-    component: {
-      border: `2px solid ${colorVariants[variant]}`,
-      color: 'white',
-      fontSize: '15px',
-      padding: '5px',
-      ':hover': {
-        borderColor: colorVariants[variant]
-      },
-      ':focus': {
-        borderColor: colorVariants[variant]
-      },
-      ':active': {
-        backgroundColor: colorVariants[`${variant}Active`]
-      }
+  const variants = {
+    default: {
+      color: '#7C786A'
     },
-    recentlyPressed: {
-      backgroundColor: colorVariants[`${variant}Active`]
+    action: {
+      color: '#8DCDC1'
     },
-    notRecentlyPressed: {
-      backgroundColor: 'black'
+    success: {
+      color: '#D3E397'
+    },
+    warning: {
+      color: '#FFF5C3'
+    },
+    error: {
+      color: '#EB6E44'
     }
-  })
+  }
 
   function onClick () {
     pressTrigger()
   }
 
+  const Button = styled.button`
+    background-color: transparent;
+    border: 3px solid ${variants[variant].color};
+    color: ${({state}) => (state.isRecentlyPressed ? 'deeppink' : 'lightgrey')};
+    font-size: 15px;
+    padding: 5px;
+    
+    &:focus {
+      outline: none;
+    }
+  `
+
   const view = ({state}) => (
-    <button className={css(styles.component, state.isRecentlyPressed ? styles.recentlyPressed : styles.notRecentlyPressed)} onClick={onClick}>
+    <Button onClick={onClick} state={state}>
       {name}
-    </button>
+    </Button>
   )
 
   return ConnectObserver({view, state_: state_})

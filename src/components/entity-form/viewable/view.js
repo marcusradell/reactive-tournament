@@ -6,8 +6,6 @@ export default function create ({
 }) {
   const styles = StyleSheet.create({
     component: {
-      border: `2px solid white`,
-      color: 'white',
       fontSize: '15px',
       padding: '5px'
     },

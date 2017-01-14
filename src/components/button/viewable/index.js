@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, css } from 'aphrodite'
+import styled from 'styled-components'
 import {merge as ramdaMerge} from 'ramda'
 import ConnectObserver from '../../../utils/connect-observer'
 import View from './view'
@@ -7,8 +7,7 @@ import View from './view'
 export default function create ({model}) {
   const view = View({
     React,
-    StyleSheet,
-    css,
+    styled,
     ConnectObserver,
     state_: model.state_,
     labels: model.labels,

@@ -5,8 +5,11 @@ function getPage (route, children, defaultChild) {
 export default function create ({
   React,
   ConnectObserver,
-  state_, children, defaultChild}) {
-  const Render = ({state}) => (
+  state_,
+  children,
+  defaultChild
+}) {
+  const view = ({state}) => (
     <div>
       {React.createElement(getPage(state.route, children, defaultChild))}
     </div>
@@ -14,6 +17,6 @@ export default function create ({
 
   return ConnectObserver({
     state_,
-    Render
+    view
   })
 }

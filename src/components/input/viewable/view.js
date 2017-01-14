@@ -18,7 +18,7 @@ export default function create ({
       padding: '5px'
     },
     inputWrapper: {
-      border: 'solid white 2px',
+      borderBottom: 'solid white 2px',
       padding: '5px',
       display: 'flex',
       justifyContent: 'space-between',
