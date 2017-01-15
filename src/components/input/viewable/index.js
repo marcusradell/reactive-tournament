@@ -13,7 +13,7 @@ export default function create ({model}) {
     css,
     StyleSheet,
     ConnectObserver,
-    name: model.name,
+    fieldName: model.fieldName,
     type: model.type,
     state_: model.state_,
     updateTrigger: model.actions.triggers.update,

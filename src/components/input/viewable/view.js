@@ -4,7 +4,7 @@ export default function create ({
   React,
   css,
   StyleSheet,
-  name,
+  fieldName,
   type,
   state_,
   updateTrigger,
@@ -57,14 +57,14 @@ export default function create ({
 
   const view = ({ state }) => (
     <div className={css(styles.component)}>
-      <label className={css(styles.labelElement)} htmlFor={name}>
-        {name}
+      <label className={css(styles.labelElement)} htmlFor={fieldName}>
+        {fieldName}
       </label>
       <div className={css(styles.inputWrapper)}>
         <input
           className={css(styles.inputElement)}
           type={type}
-          name={name}
+          name={fieldName}
           placeholder={type}
           value={state.value}
           onChange={onChange}

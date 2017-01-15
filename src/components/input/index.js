@@ -5,7 +5,7 @@ import Button from '../button'
 import Actions from './actions'
 import State from './state'
 
-export default function create ({provider, name, type = 'text'}) {
+export default function create ({provider, fieldName, type = 'text'}) {
   const children = {
     okButton: Button({provider, name: 'save', variant: 'success'}),
     cancelButton: Button({provider, name: 'cancel', variant: 'error'})
@@ -21,7 +21,7 @@ export default function create ({provider, name, type = 'text'}) {
   })
 
   return {
-    name,
+    fieldName,
     type,
     children,
     actions,
