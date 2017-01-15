@@ -5,10 +5,10 @@ import Button from '../button'
 import Actions from './actions'
 import State from './state'
 
-export default function create ({name, type = 'text'}) {
+export default function create ({provider, name, type = 'text'}) {
   const children = {
-    okButton: Button({name: 'save', variant: 'success'}),
-    cancelButton: Button({name: 'cancel', variant: 'error'})
+    okButton: Button({provider, name: 'save', variant: 'success'}),
+    cancelButton: Button({provider, name: 'cancel', variant: 'error'})
   }
 
   const actions = Actions({async})

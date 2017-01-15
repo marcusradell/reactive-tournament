@@ -3,7 +3,7 @@ import {merge as ramdaMerge} from 'ramda'
 import Actions from './actions'
 import State from './state'
 
-export default function create ({name, variant}) {
+export default function create ({provider, name, variant}) {
   const actions = Actions({async})
   const state_ = State({
     ramdaMerge,

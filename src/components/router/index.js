@@ -5,7 +5,12 @@ import Actions from './actions'
 import State from './state'
 import Epics from './epics'
 
-export default function create ({initialRoute, setRouteSource, setRouteSinkEffect}) {
+export default function create ({
+  provider,
+  initialRoute,
+  setRouteSource,
+  setRouteSinkEffect
+}) {
   const actions = Actions({mostAsync, setRouteSource})
   const epics = Epics({
     setRouteSinkEffect,
@@ -16,7 +21,7 @@ export default function create ({initialRoute, setRouteSource, setRouteSinkEffec
     ramdaMerge,
     setRouteSuccess: epics.setRouteSuccess
   })
-  const pages = Pages({routerState_: state_})
+  const pages = Pages({provider, routerState_: state_})
   const children = {
     pages
   }

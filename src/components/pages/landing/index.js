@@ -1,3 +1,3 @@
-export default function create () {
+export default function create ({provider}) {
   return {}
 }
