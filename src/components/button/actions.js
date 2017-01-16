@@ -5,12 +5,16 @@ export default function create ({async}) {
     pressSubject.next()
   }
 
+  const unpress = pressSubject
+  .delay(500)
+
   return {
     triggers: {
       press: pressTrigger
     },
     streams: {
-      press: pressSubject
+      press: pressSubject,
+      unpress
     }
   }
 }

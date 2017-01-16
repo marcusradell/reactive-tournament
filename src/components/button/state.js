@@ -1,4 +1,4 @@
-export default function create ({ramdaMerge, press_}) {
+export default function create ({ramdaMerge, press_, unpress_}) {
   const initialState = {
     isRecentlyPressed: false
   }
@@ -8,8 +8,7 @@ export default function create ({ramdaMerge, press_}) {
     ramdaMerge(state, {isRecentlyPressed: true})
   ))
 
-  const unpressReducer_ = press_
-  .delay(500)
+  const unpressReducer_ = unpress_
   .map(() => state => (
       ramdaMerge(state, {isRecentlyPressed: false})
   ))

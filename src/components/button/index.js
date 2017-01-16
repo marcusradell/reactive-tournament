@@ -7,7 +7,8 @@ export default function create ({provider, name, variant}) {
   const actions = Actions({async})
   const state_ = State({
     ramdaMerge,
-    press_: actions.streams.press
+    press_: actions.streams.press,
+    unpress_: actions.streams.unpress
   })
 
   const labels = {
