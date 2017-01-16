@@ -4,6 +4,7 @@ import Actions from './actions'
 import State from './state'
 
 export default function create ({provider, name, variant}) {
+  // @TODO: delayMs should be set as a part of the global animation style.
   const actions = Actions({mostAsync, delayMs: 500})
   const state_ = State({
     ramdaMerge,
