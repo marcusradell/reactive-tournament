@@ -1,12 +1,12 @@
-export default function create ({async}) {
-  const pressSubject = async()
+export default function create ({mostAsync, delayMs}) {
+  const pressSubject = mostAsync()
 
   function pressTrigger () {
     pressSubject.next()
   }
 
   const unpress = pressSubject
-  .delay(500)
+  .delay(delayMs)
 
   return {
     triggers: {
