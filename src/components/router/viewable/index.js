@@ -8,7 +8,6 @@ export default function create ({model}) {
   const children = {pages}
   const view = View({
     React,
-    state$: model.state$,
     PagesView: pages.view
   })
 
