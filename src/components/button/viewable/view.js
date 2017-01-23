@@ -47,5 +47,5 @@ export default function create ({
     </Button>
   )
 
-  return ConnectObserver({view, state_: state_})
+  return ConnectObserver({view, state_})
 }

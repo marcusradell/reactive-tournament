@@ -3,6 +3,7 @@ import {merge as ramdaMerge} from 'ramda'
 import Actions from './actions'
 import State from './state'
 
+// @TODO: Fix variants as a named export
 export default function create ({provider, name, variant}) {
   // @TODO: delayMs should be set as a part of the global animation style.
   const actions = Actions({mostAsync, delayMs: 500})
