@@ -1,15 +1,28 @@
+// @TODO: Separate commands from queries.
+
 import {async} from 'most-subject'
+import {merge as ramdaMerge, omit as ramdaOmit} from 'ramda'
+import {v4 as uuidV4} from 'uuid'
 import Actions from './actions'
 import State from './state'
-import LocalStorage from './local-storage'
+import LocalStorageApiEffect from './local-storage-api-effect'
 
-export default function create ({entityType}) {
+export default function create ({provider, entityType}) {
+  const {localStorage} = provider
+
   const labels = {
     entityType
   }
   const actions = Actions({async})
   const state = State({setState_: actions.streams.setState})
-  const apiEffect = LocalStorage({entityType, setStateTrigger: actions.triggers.setState})
+  const apiEffect = LocalStorageApiEffect({
+    localStorage,
+    ramdaMerge,
+    ramdaOmit,
+    uuidV4,
+    entityType,
+    setStateTrigger: actions.triggers.setState
+  })
 
   return {
     labels,

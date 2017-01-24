@@ -2,8 +2,8 @@ import {async as mostAsync} from 'most-subject'
 import {merge as ramdaMerge} from 'ramda'
 import Actions from './actions'
 import State from './state'
+export {default as variants} from './variants'
 
-// @TODO: Fix variants as a named export
 export default function create ({provider, name, variant}) {
   // @TODO: delayMs should be set as a part of the global animation style.
   const actions = Actions({mostAsync, delayMs: 500})

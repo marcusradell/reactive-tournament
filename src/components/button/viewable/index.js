@@ -5,7 +5,7 @@ import ConnectObserver from '../../../utils/connect-observer'
 import View from './view'
 
 export default function create ({model}) {
-  const view = View({
+  const pureView = View({
     React,
     styled,
     ConnectObserver,
@@ -14,7 +14,14 @@ export default function create ({model}) {
     pressTrigger: model.actions.triggers.press,
     press_: model.actions.streams.press
   })
+
+  const view = ConnectObserver({
+    view: pureView,
+    state_: model.state_
+  })
+
   const viewable = {
+    pureView,
     view
   }
 

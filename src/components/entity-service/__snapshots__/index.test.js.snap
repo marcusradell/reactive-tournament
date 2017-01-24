@@ -1,0 +1,11 @@
+exports[`test #remove() 1`] = `
+Object {
+  "chair": "{\"someOtherId\":{\"someField\":\"someOtherValue\"}}",
+}
+`;
+
+exports[`test #update() 1`] = `
+Object {
+  "chair": "{\"someId\":{\"someField\":\"someValue\",\"someNewField\":\"some new value\"}}",
+}
+`;

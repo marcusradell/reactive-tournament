@@ -1,8 +1,6 @@
 export default function create ({
   React,
   styled,
-  ConnectObserver,
-  state_,
   labels: {name, variant},
   pressTrigger,
   press_
@@ -47,5 +45,5 @@ export default function create ({
     </Button>
   )
 
-  return ConnectObserver({view, state_})
+  return view
 }

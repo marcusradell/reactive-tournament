@@ -1,5 +1,3 @@
-// @TODO: continue here.
-
 export default function create ({setState_}) {
   const initialState = {}
 
