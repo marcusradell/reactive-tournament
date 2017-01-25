@@ -5,9 +5,9 @@ export default function create ({setState_}) {
   .map((value) => () => (value))
 
   const state_ = setStateReducer_
-  .scan((state, reduce) => (
-    reduce(state)
-  ), initialState)
+  .scan((state, reduce) => {
+    return reduce(state)
+  }, initialState)
 
   return state_
 }

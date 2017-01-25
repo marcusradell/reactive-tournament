@@ -7,11 +7,7 @@ import View from './view'
 export default function create ({model}) {
   const pureView = View({
     React,
-    styled,
-    state_: model.state_,
-    labels: model.labels,
-    pressTrigger: model.actions.triggers.press,
-    press_: model.actions.streams.press
+    styled
   })
 
   const view = ConnectObserver({

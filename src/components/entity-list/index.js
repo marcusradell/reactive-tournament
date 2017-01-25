@@ -1,5 +1,12 @@
+export default function create ({provider, entityType}) {
+  const labels = {
+    entityType
+  }
 
+  const state_ = provider.entityServices[entityType].state_
 
-export default function create () {
-
+  return {
+    labels,
+    state_
+  }
 }

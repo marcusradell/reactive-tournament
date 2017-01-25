@@ -1,3 +1,4 @@
+// @TODO: Think about (and do) put all actions here as component actions.
 export default function create ({
   localStorage,
   ramdaMerge,
@@ -15,13 +16,17 @@ export default function create ({
       return id
     })
     .then((id) => {
-      setStateTrigger(readAll(entityType))
+      readAll(entityType)
+      .then(setStateTrigger)
       return {id}
     })
   }
 
+  // @TODO: Have one fn for setStateTrigger and one fn for getting the localStorage
   function readAll () {
-    return Promise.resolve(JSON.parse(localStorage.getItem(entityType) || '{}'))
+    return Promise.resolve(
+      JSON.parse(localStorage.getItem(entityType) || '{}')
+    )
   }
 
   function update (id, field, value) {
@@ -32,7 +37,8 @@ export default function create ({
       localStorage.setItem(entityType, newState)
     })
     .then(() => {
-      setStateTrigger(readAll(entityType))
+      readAll(entityType)
+      .then(setStateTrigger)
       return {}
     })
   }
@@ -44,7 +50,10 @@ export default function create ({
       localStorage.setItem(entityType, newState)
     })
     .then(() => {
-      setStateTrigger(readAll(entityType))
+      readAll(entityType)
+      .then((state) => {
+        setStateTrigger(state)
+      })
       return {}
     })
   }

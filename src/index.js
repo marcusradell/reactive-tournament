@@ -9,3 +9,11 @@ const app = App({provider})
 const {view: View} = app
 ReactDOM.render(<View />, document.getElementById('root'))
 window.app = app
+
+// @TODO: Remove
+const {apiEffect} = provider.entityServices.user
+apiEffect.create()
+.then(({id}) => {
+  apiEffect.update(id, 'firstName', 'Marcus')
+})
+window.apiEffect = apiEffect

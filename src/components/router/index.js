@@ -15,6 +15,7 @@ export default function create ({provider}) {
   } = BrowserRouter({
     mostFromEvent,
     // @TODO: Purify these two and the BrowserRouter
+    // Should conceptually be able to replace window and window.location with a input field
     eventSource: window,
     eventName: 'hashchange'
   })

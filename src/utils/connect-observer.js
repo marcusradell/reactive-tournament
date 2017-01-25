@@ -6,8 +6,8 @@ export default function create ({state_, view: View}) {
   return class ConnectObserver extends React.Component {
     componentDidMount () {
       this.subscription = state_.subscribe({
-        next: (stateData) => {
-          this.setState(stateData)
+        next: (data) => {
+          this.setState({data})
         }
       })
     }
@@ -19,7 +19,7 @@ export default function create ({state_, view: View}) {
     render () {
       return (
         this.state &&
-        <View state={this.state} />
+        <View state={this.state.data} />
       )
     }
   }

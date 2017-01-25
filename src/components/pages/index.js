@@ -1,13 +1,14 @@
 import Landing from './landing'
 import Login from './login'
+import UserList from './user-list'
 
 // TODO: Make a component
 export default function create ({provider, routerState_}) {
   const state_ = routerState_
-  const landing = Landing({provider})
   const children = {
-    landing,
-    login: Login({provider})
+    landing: Landing({provider}),
+    login: Login({provider}),
+    userList: UserList({provider})
   }
   const defaultChild = 'login'
   return {

@@ -14,7 +14,7 @@ export default function create ({provider, entityType}) {
     entityType
   }
   const actions = Actions({async})
-  const state = State({setState_: actions.streams.setState})
+  const state_ = State({setState_: actions.streams.setState})
   const apiEffect = LocalStorageApiEffect({
     localStorage,
     ramdaMerge,
@@ -27,7 +27,7 @@ export default function create ({provider, entityType}) {
   return {
     labels,
     actions,
-    state,
+    state_,
     apiEffect
   }
 }
