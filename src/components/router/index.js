@@ -1,16 +1,23 @@
 import {merge as ramdaMerge} from 'ramda'
 import {async as mostAsync} from 'most-subject'
+import {fromEvent as mostFromEvent} from 'most'
+import BrowserRouter from './browser-router'
 import Pages from '../pages'
 import Actions from './actions'
 import State from './state'
 import Epics from './epics'
 
-export default function create ({
-  provider,
-  initialRoute,
-  setRouteSource,
-  setRouteSinkEffect
-}) {
+export default function create ({provider}) {
+  const {
+    initialRoute,
+    setRouteSource,
+    setRouteSinkEffect
+  } = BrowserRouter({
+    mostFromEvent,
+    // @TODO: Purify these two and the BrowserRouter
+    eventSource: window,
+    eventName: 'hashchange'
+  })
   const actions = Actions({mostAsync, setRouteSource})
   const epics = Epics({
     setRouteSinkEffect,
