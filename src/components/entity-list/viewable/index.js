@@ -5,14 +5,21 @@ import ConnectObserver from '../../../utils/connect-observer'
 import View from './view'
 
 export default function create ({model}) {
+  const viewState = model.state_
+  .combine(
+    (list, entityService) => ({list, entityService}),
+    model.children.entityService.state_
+  )
+
   const pureView = View({
     React,
-    styled
+    styled,
+    selectTrigger: model.actions.triggers.select
   })
 
   const view = ConnectObserver({
     view: pureView,
-    state_: model.state_
+    state_: viewState
   })
 
   const viewable = {

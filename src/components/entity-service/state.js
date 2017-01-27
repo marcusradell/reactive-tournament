@@ -1,4 +1,4 @@
-export default function create ({setState_}) {
+export default function create ({setState_, hold}) {
   const initialState = {}
 
   const setStateReducer_ = setState_
@@ -9,5 +9,5 @@ export default function create ({setState_}) {
     return reduce(state)
   }, initialState)
 
-  return state_
+  return hold(state_)
 }

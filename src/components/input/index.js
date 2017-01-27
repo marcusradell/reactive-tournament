@@ -5,7 +5,12 @@ import Button from '../button'
 import Actions from './actions'
 import State from './state'
 
-export default function create ({provider, fieldName, type = 'text'}) {
+export default function create ({provider, entityType, fieldName, type = 'text', id}) {
+  const entityServiceFieldState_ = provider.entityServices.user.state_
+  .map((state) => {
+    return state[id] && state[id][fieldName]
+  })
+
   const children = {
     okButton: Button({provider, name: 'save', variant: 'success'}),
     cancelButton: Button({provider, name: 'cancel', variant: 'error'})
@@ -25,6 +30,7 @@ export default function create ({provider, fieldName, type = 'text'}) {
     type,
     children,
     actions,
-    state_
+    state_,
+    entityServiceFieldState_
   }
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import {merge as ramdaMerge} from 'ramda'
+import ConnectObserver from '../../../../utils/connect-observer'
 import EntityList from '../../../entity-list/viewable'
+import EntityForm from '../../../entity-form/viewable'
 import View from './view'
 
 export default function create ({model}) {
@@ -10,14 +12,26 @@ export default function create ({model}) {
     userList
   }
 
-  const view = View({
+  const entityForm_ = model.entityForm_
+  .map((entityFormModel) => (
+    EntityForm({model: entityFormModel})
+  ))
+
+  const pureView = View({
     React,
     UserListView: userList.view
   })
 
+  const view = ConnectObserver({
+    view: pureView,
+    state_: entityForm_
+  })
+
   const viewable = {
     children,
-    view
+    view,
+    pureView,
+    entityForm_
   }
 
   return ramdaMerge(

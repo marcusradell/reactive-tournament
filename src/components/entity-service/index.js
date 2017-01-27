@@ -6,6 +6,7 @@ import {v4 as uuidV4} from 'uuid'
 import Actions from './actions'
 import State from './state'
 import LocalStorageApiEffect from './local-storage-api-effect'
+import mostHold from '@most/hold'
 
 export default function create ({provider, entityType}) {
   const {localStorage} = provider
@@ -14,7 +15,8 @@ export default function create ({provider, entityType}) {
     entityType
   }
   const actions = Actions({async})
-  const state_ = State({setState_: actions.streams.setState})
+  console.dir(mostHold)
+  const state_ = State({hold: mostHold.default, setState_: actions.streams.setState})
   const apiEffect = LocalStorageApiEffect({
     localStorage,
     ramdaMerge,

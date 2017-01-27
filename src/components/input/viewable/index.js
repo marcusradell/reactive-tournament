@@ -16,6 +16,7 @@ export default function create ({model}) {
     fieldName: model.fieldName,
     type: model.type,
     state_: model.state_,
+    entityServiceFieldState_: model.entityServiceFieldState_,
     updateTrigger: model.actions.triggers.update,
     OkButtonView: children.okButton.view,
     okTrigger: children.okButton.actions.triggers.press,

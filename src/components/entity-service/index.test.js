@@ -13,7 +13,7 @@ test('interface', () => {
   const actual = [
     'labels',
     'actions',
-    'state',
+    'state_',
     'apiEffect'
   ]
   expect(expected).toEqual(actual)

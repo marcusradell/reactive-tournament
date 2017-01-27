@@ -1,4 +1,3 @@
-// @TODO: Rename all files to .jsx if webpack handles it.
 export default function create ({
   ConnectObserver,
   React,
@@ -7,6 +6,7 @@ export default function create ({
   fieldName,
   type,
   state_,
+  entityServiceFieldState_,
   updateTrigger,
   OkButtonView,
   okTrigger,
@@ -40,7 +40,7 @@ export default function create ({
     }
   })
 
-  function onKeyPress (event) {
+  function onKeyDown (event) {
     switch (event.keyCode) {
       case 13:
         return okTrigger()
@@ -55,35 +55,43 @@ export default function create ({
     updateTrigger(event.target.value)
   }
 
-  const view = ({ state }) => (
-    <div className={css(styles.component)}>
-      <label className={css(styles.labelElement)} htmlFor={fieldName}>
-        {fieldName}
-      </label>
-      <div className={css(styles.inputWrapper)}>
-        <input
-          className={css(styles.inputElement)}
-          type={type}
-          name={fieldName}
-          placeholder={type}
-          value={state.value}
-          onChange={onChange}
-          onKeyDown={onKeyPress}
-        />
-        <OkButtonView />
-        <CancelButtonView />
+  const view = ({ state }) => {
+    return (
+      <div className={css(styles.component)}>
+        <label className={css(styles.labelElement)} htmlFor={fieldName}>
+          {fieldName}
+        </label>
+        <div className={css(styles.inputWrapper)}>
+          <input
+            className={css(styles.inputElement)}
+            type={type}
+            name={fieldName}
+            placeholder={state.service || type}
+            value={state.local.value}
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+          />
+          <OkButtonView />
+          <CancelButtonView />
+        </div>
+        <div>
+          @TODO: service: {JSON.stringify(state.service, null, 2)}
+        </div>
       </div>
-    </div>
-  )
-
-  view.propTypes = {
-    state: React.PropTypes.shape({
-      value: React.PropTypes.string.isRequired
-    })
+    )
   }
 
+  // @TODO: Refactor out to index.js
+  const viewState_ = state_
+  .combine((local, service) => {
+    return {local, service}
+  },
+  entityServiceFieldState_
+  )
+
+  // @TODO: Refactor out to index.js
   return ConnectObserver({
-    state_,
+    state_: viewState_,
     view
   })
 }

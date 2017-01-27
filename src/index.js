@@ -13,7 +13,13 @@ window.app = app
 // @TODO: Remove
 const {apiEffect} = provider.entityServices.user
 apiEffect.create()
-.then(({id}) => {
-  apiEffect.update(id, 'firstName', 'Marcus')
+.then((data) => {
+  apiEffect.update(data.id, 'firstName', 'Marcus')
+  return data
 })
+.then((data) => {
+  apiEffect.update(data.id, 'lastName', 'Nielsen')
+})
+
 window.apiEffect = apiEffect
+window.user = provider.entityServices.user
