@@ -1,5 +1,4 @@
 // @TODO: Separate commands from queries.
-
 import {async} from 'most-subject'
 import {merge as ramdaMerge, omit as ramdaOmit} from 'ramda'
 import {v4 as uuidV4} from 'uuid'

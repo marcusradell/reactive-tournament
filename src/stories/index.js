@@ -1,6 +1,7 @@
 import React from 'react'
 import '../index.css'
 import { compose } from 'ramda'
+import { of as streamOf } from 'most'
 import { storiesOf } from '@kadira/storybook'
 import Provider from '../components/provider'
 import ButtonModel from '../components/button'
@@ -74,7 +75,12 @@ storiesOf('components', module)
     )
   })
   .add('input', function onAdd () {
-    const inputModel = InputModel({provider, name: 'input', type: 'text'})
+    const inputModel = InputModel({
+      provider,
+      fieldName: 'email',
+      selectedId_: streamOf(''),
+      type: 'text'
+    })
     const inputViewable = InputViewable({ model: inputModel })
     const Input = inputViewable.view
 
@@ -85,15 +91,12 @@ storiesOf('components', module)
     )
   })
   .add('form', function onAdd () {
-    // @TODO: Include schema as a part of the EntityService
-    const schema = [
-      {name: 'first name', type: 'text'},
-      {name: 'last name', type: 'text'},
-      {name: 'email', type: 'text'},
-      {name: 'password', type: 'password'}
-    ]
     const viewable = FormViewable({
-      model: FormModel({provider, schema})
+      model: FormModel({
+        provider,
+        entityType: 'user',
+        selectedId_: streamOf('')
+      })
     })
 
     const Component = viewable.view
@@ -110,7 +113,7 @@ storiesOf('components', module)
     })
 
     const Component = viewable.view
-    provider.entityServices.user.apiEffect.readAll()
+    provider.entityServices.user.apiEffect.updateCache()
     return (
       <div>
         <Component />

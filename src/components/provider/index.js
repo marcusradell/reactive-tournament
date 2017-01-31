@@ -1,4 +1,5 @@
 import EntityService from '../entity-service'
+import * as schemas from '../schemas'
 
 export default function create () {
   const localStorage = window.localStorage
@@ -9,6 +10,7 @@ export default function create () {
   }
 
   return {
-    entityServices
+    entityServices,
+    schemas
   }
 }

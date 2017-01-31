@@ -17,7 +17,7 @@ export default function create ({
       return id
     })
     .then((id) => {
-      readAll(entityType)
+      updateCache()
       return {id}
     })
   }
@@ -27,6 +27,10 @@ export default function create ({
     return Promise.resolve(
       JSON.parse(localStorage.getItem(entityType) || '{}')
     )
+  }
+
+  function updateCache () {
+    return readAll()
     .then((state) => {
       setStateTrigger(state)
     })
@@ -40,7 +44,7 @@ export default function create ({
       localStorage.setItem(entityType, newState)
     })
     .then(() => {
-      readAll(entityType)
+      updateCache()
       return {}
     })
   }
@@ -52,7 +56,7 @@ export default function create ({
       localStorage.setItem(entityType, newState)
     })
     .then(() => {
-      readAll(entityType)
+      updateCache()
       return {}
     })
   }
@@ -61,6 +65,7 @@ export default function create ({
     create,
     readAll,
     update,
+    updateCache,
     remove
   }
 }

@@ -4,17 +4,14 @@ import EntityForm from '../entity-form'
 
 export default function create ({provider, entityType}) {
   const entityCreate = EntityCreate({provider, entityType})
+
+  // @TODO: Select createResolved IDs
   const entityList = EntityList({provider, entityType})
-
-  // @TODO: Remove
-  const schema = [
-    {name: 'first name', type: 'text'},
-    {name: 'last name', type: 'text'},
-    {name: 'email', type: 'text'},
-    {name: 'password', type: 'password'}
-  ]
-
-  const entityForm = EntityForm({provider, entityType, schema})
+  const selectedId_ = entityList.actions.streams.select
+  const entityForm = EntityForm({
+    provider,
+    entityType,
+    selectedId_})
 
   const children = {
     entityCreate,

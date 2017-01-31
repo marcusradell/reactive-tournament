@@ -1,4 +1,10 @@
-export default function create ({provider, Input, schema, entityType, id}) {
+export default function create ({
+  provider,
+  Input,
+  schema,
+  entityType,
+  selectedId_
+}) {
   return schema
   .reduce(function onReduce (acc, schemaRow) {
     acc[schemaRow.name] = Input({
@@ -6,7 +12,7 @@ export default function create ({provider, Input, schema, entityType, id}) {
       entityType,
       fieldName: schemaRow.name,
       type: schemaRow.type,
-      id
+      selectedId_
     })
     return acc
   }, {})

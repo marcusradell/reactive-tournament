@@ -1,29 +1,56 @@
-import {merge as mostMerge} from 'most'
+// @TODO: Rename to entity-input
+import {merge as mostMerge, fromPromise as streamFromPromise} from 'most'
 import {async} from 'most-subject'
 import {merge as ramdaMerge} from 'ramda'
 import Button from '../button'
 import Actions from './actions'
 import State from './state'
+import Epics from './epics'
 
-export default function create ({provider, entityType, fieldName, type = 'text', id}) {
+export default function create ({
+  provider,
+  entityType,
+  fieldName,
+  selectedId_,
+  type = 'text'}) {
   const entityServiceFieldState_ = provider.entityServices.user.state_
-  .map((state) => {
-    return state[id] && state[id][fieldName]
-  })
+  .combine(
+    (state, {id}) => {
+      return state[id] && state[id][fieldName]
+    },
+    selectedId_
+  )
+
+  function updateFieldById ({id, value}) {
+    return provider.entityServices[entityType].apiEffect.update(id, fieldName, value)
+  }
+
+  const okButton = Button({provider, name: 'save', variant: 'success'})
+  const cancelButton = Button({provider, name: 'cancel', variant: 'error'})
 
   const children = {
-    okButton: Button({provider, name: 'save', variant: 'success'}),
-    cancelButton: Button({provider, name: 'cancel', variant: 'error'})
+    okButton,
+    cancelButton
   }
 
   const actions = Actions({async})
   const state_ = State({
     mostMerge,
     ramdaMerge,
-    okBehavior: children.okButton.actions.streams.press,
-    cancelBehavior: children.cancelButton.actions.streams.press,
+    okBehavior: okButton.actions.streams.press,
+    cancelBehavior: cancelButton.actions.streams.press,
     updateBehavior: actions.streams.update
   })
+
+  const epics = Epics({
+    streamFromPromise,
+    updateFieldById,
+    actions,
+    selectedId_,
+    save_: actions.streams.update.sampleWith(okButton.actions.streams.press)
+  })
+  // @TODO: Fix if it doesn't complete when unmounted
+  epics.merged_.drain()
 
   return {
     fieldName,
@@ -31,6 +58,7 @@ export default function create ({provider, entityType, fieldName, type = 'text',
     children,
     actions,
     state_,
-    entityServiceFieldState_
+    entityServiceFieldState_,
+    epics
   }
 }

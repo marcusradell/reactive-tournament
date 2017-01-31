@@ -1,22 +1,23 @@
 export default ({
-  // @TODO: partially apply entity, id, and field.
-  dispatcher,
-  entity,
-  id,
-  field, actions}) => {
-  const save = actions.streams.save
-  .map((stateData) => (
-    dispatcher
-    .update(entity, id, field, stateData)
-  ))
+  streamFromPromise,
+  updateFieldById,
+  actions,
+  selectedId_,
+  save_
+}) => {
+  const merged_ = save_
+  .combine((value, {id}) => (
+    streamFromPromise(updateFieldById({id, value}))
+  ), selectedId_)
   .switch()
-  .tap((responseData) => (
-    responseData.error
-    ? actions.triggers.saveRejected(responseData)
-    : actions.triggers.saveResolved(responseData)
-  ))
+  // @TODO: Implement
+  // .tap((responseData) => (
+  //   responseData.error
+  //   ? actions.triggers.saveRejected(responseData)
+  //   : actions.triggers.saveResolved(responseData)
+  // ))
 
   return {
-    save
+    merged_
   }
 }
