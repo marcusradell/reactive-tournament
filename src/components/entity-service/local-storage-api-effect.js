@@ -1,4 +1,5 @@
 // @TODO: Think about (and do) put all actions here as component actions.
+// This should then be epics.
 export default function create ({
   localStorage,
   ramdaMerge,
@@ -17,7 +18,6 @@ export default function create ({
     })
     .then((id) => {
       readAll(entityType)
-      .then(setStateTrigger)
       return {id}
     })
   }
@@ -27,6 +27,9 @@ export default function create ({
     return Promise.resolve(
       JSON.parse(localStorage.getItem(entityType) || '{}')
     )
+    .then((state) => {
+      setStateTrigger(state)
+    })
   }
 
   function update (id, field, value) {
@@ -38,7 +41,6 @@ export default function create ({
     })
     .then(() => {
       readAll(entityType)
-      .then(setStateTrigger)
       return {}
     })
   }
@@ -51,9 +53,6 @@ export default function create ({
     })
     .then(() => {
       readAll(entityType)
-      .then((state) => {
-        setStateTrigger(state)
-      })
       return {}
     })
   }
