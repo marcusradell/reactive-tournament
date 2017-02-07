@@ -1,0 +1,11 @@
+exports[`test change base ms 1`] = `
+Object {
+  "baseMs": 1,
+}
+`;
+
+exports[`test create default state 1`] = `
+Object {
+  "baseMs": 400,
+}
+`;
