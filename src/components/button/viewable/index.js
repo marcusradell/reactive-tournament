@@ -8,15 +8,18 @@ export default function create ({model}) {
   const pureView = View({
     React,
     styled,
-    state_: model.state_,
     labels: model.labels,
-    pressTrigger: model.actions.triggers.press,
-    press_: model.actions.streams.press
+    pressTrigger: model.actions.triggers.press
   })
 
   const view = ConnectObserver({
     view: pureView,
-    state_: model.state_
+    state_: model.state_.combine((self, colors) => {
+      return {
+        self,
+        colors
+      }
+    }, model.colors.state_)
   })
 
   const viewable = {

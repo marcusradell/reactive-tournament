@@ -1,0 +1,17 @@
+exports[`test change color 1`] = `
+Object {
+  "complementaryMain": "hsl(146.39999999999998, 50.3%, 35.5%)",
+  "complementarySecondary": "hsl(206.39999999999998, 50.3%, 35.5%)",
+  "primaryMain": "hsl(326.4, 50.3%, 35.5%)",
+  "primarySecondary": "hsl(26.399999999999977, 50.3%, 35.5%)",
+}
+`;
+
+exports[`test create default state 1`] = `
+Object {
+  "complementaryMain": "hsl(235.79999999999995, 49.8%, 44.5%)",
+  "complementarySecondary": "hsl(295.79999999999995, 49.8%, 44.5%)",
+  "primaryMain": "hsl(55.80000000000001, 49.8%, 44.5%)",
+  "primarySecondary": "hsl(115.80000000000001, 49.8%, 44.5%)",
+}
+`;

@@ -5,6 +5,7 @@ import State from './state'
 export {default as variants} from './variants'
 
 export default function create ({provider, name, variant}) {
+  const {colors} = provider
   // @TODO: delayMs should be set as a part of the global animation style.
   const actions = Actions({mostAsync, delayMs: 500})
   const state_ = State({
@@ -19,6 +20,7 @@ export default function create ({provider, name, variant}) {
   }
 
   return {
+    colors,
     labels,
     actions,
     state_

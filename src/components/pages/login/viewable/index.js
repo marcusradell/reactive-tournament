@@ -1,18 +1,18 @@
 import React from 'react'
 import {merge as ramdaMerge} from 'ramda'
-import Form from '../../../entity-form/viewable'
+import EntityCrud from '../../../entity-crud/viewable'
 import View from './view'
 
 export default function create ({model}) {
-  const form = Form({model: model.children.form})
+  const userCrud = EntityCrud({model: model.children.userCrud})
 
   const children = {
-    form
+    userCrud
   }
 
   const view = View({
     React,
-    FormView: form.view
+    UserCrud: userCrud.view
   })
 
   const viewable = {

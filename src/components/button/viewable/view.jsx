@@ -2,8 +2,7 @@ export default function create ({
   React,
   styled,
   labels: {name, variant},
-  pressTrigger,
-  press_
+  pressTrigger
 }) {
   const variants = {
     default: {
@@ -30,7 +29,7 @@ export default function create ({
   const Button = styled.button`
     background-color: transparent;
     border: 3px solid ${variants[variant].color};
-    color: ${({state}) => (state.isRecentlyPressed ? 'deeppink' : 'lightgrey')};
+    color: ${({state}) => (state.self.isRecentlyPressed ? state.colors.complementaryMain : state.colors.primaryMain)};
     font-size: 15px;
     padding: 5px;
     

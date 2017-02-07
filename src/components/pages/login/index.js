@@ -1,13 +1,8 @@
-import FormModel from '../../entity-form'
+import EntityCrud from '../../entity-crud'
 
 export default function create ({provider}) {
-  const inputSchema = [
-    {name: 'email', type: 'text'},
-    {name: 'password', type: 'password'}
-  ]
-
-  const form = FormModel({provider, schema: inputSchema})
-  const children = {form}
+  const userCrud = EntityCrud({provider, entityType: 'user'})
+  const children = {userCrud}
 
   return {
     children

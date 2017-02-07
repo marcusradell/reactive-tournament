@@ -17,6 +17,15 @@ import EntityCrudViewable from '../components/entity-crud/viewable'
 
 const provider = Provider()
 
+// let swap = true
+
+// setInterval(() => {
+//   swap
+//   ? provider.colors.actions.triggers.setPrimaryMainHex('#FA5031')
+//   : provider.colors.actions.triggers.setPrimaryMainHex('#C32689')
+//   swap = !swap
+// }, 1000)
+
 function viewableData (model) {
   return {model}
 }
@@ -40,6 +49,7 @@ storiesOf('components', module)
         {
           variants.map((variant, index) => {
             const data = {
+              provider,
               variant,
               name: variant
             }
