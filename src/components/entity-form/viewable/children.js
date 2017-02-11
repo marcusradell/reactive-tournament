@@ -1,7 +1,7 @@
-export default function create ({Input, ReactObserver, children}) {
+export default function create ({EntityInput, ReactObserver, children}) {
   return Object.keys(children)
   .reduce(function onReduceModelToViewable (acc, key) {
-    acc[key] = Input({model: children[key]})
+    acc[key] = EntityInput({model: children[key]})
     return acc
   }, {})
 }

@@ -1,7 +1,7 @@
-import Input from '../input'
+import EntityInput from '../entity-input'
 import Children from './children'
 
-export default function create ({provider, entityType, selectedId_}) {
+export default function create ({provider, entityType, id}) {
   const schema = provider.schemas[entityType]
 
   const labels = {
@@ -10,16 +10,16 @@ export default function create ({provider, entityType, selectedId_}) {
 
   const children = Children({
     provider,
-    Input,
+    EntityInput,
     schema,
     entityType,
-    selectedId_
+    id
   })
 
   return {
     schema,
     children,
-    selectedId_,
+    id,
     labels
   }
 }

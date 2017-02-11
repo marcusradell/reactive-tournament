@@ -2,13 +2,13 @@ export default ({
   streamFromPromise,
   updateFieldById,
   actions,
-  selectedId_,
+  id,
   save_
 }) => {
   const merged_ = save_
-  .combine((value, {id}) => (
+  .map(value => (
     streamFromPromise(updateFieldById({id, value}))
-  ), selectedId_)
+  ))
   .switch()
   // @TODO: Implement
   // .tap((responseData) => (

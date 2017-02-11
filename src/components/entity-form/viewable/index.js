@@ -1,13 +1,13 @@
 import React from 'react'
 import { StyleSheet, css } from 'aphrodite'
 import {merge as ramdaMerge} from 'ramda'
-import Input from '../../input/viewable'
+import EntityInput from '../../entity-input/viewable'
 import View from './view'
 import Children from './children'
 
 export default function create ({model}) {
   const children = Children({
-    Input,
+    EntityInput,
     children: model.children
   })
   const view = View({

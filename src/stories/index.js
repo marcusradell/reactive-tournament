@@ -10,8 +10,8 @@ import AnimationThemeModel, {defaultBaseMs} from '../components/animation-theme'
 import AnimationThemeViewable from '../components/animation-theme/viewable'
 import ButtonModel from '../components/button'
 import ButtonViewable from '../components/button/viewable'
-import InputModel from '../components/input'
-import InputViewable from '../components/input/viewable'
+import EntityInputModel from '../components/entity-input'
+import EntityInputViewable from '../components/entity-input/viewable'
 import EntityCreateModel from '../components/entity-create'
 import EntityCreateViewable from '../components/entity-create/viewable'
 import FormModel from '../components/entity-form'
@@ -106,13 +106,13 @@ storiesOf('components', module)
     )
   })
   .add('input', function onAdd () {
-    const inputModel = InputModel({
+    const inputModel = EntityInputModel({
       provider,
       fieldName: 'email',
       selectedId_: streamOf(''),
       type: 'text'
     })
-    const inputViewable = InputViewable({ model: inputModel })
+    const inputViewable = EntityInputViewable({ model: inputModel })
     const Input = inputViewable.view
 
     return (
@@ -126,7 +126,7 @@ storiesOf('components', module)
       model: FormModel({
         provider,
         entityType: 'user',
-        selectedId_: streamOf('')
+        id: 1
       })
     })
 

@@ -11,15 +11,12 @@ export default function create ({
   provider,
   entityType,
   fieldName,
-  selectedId_,
+  id,
   type = 'text'}) {
   const entityServiceFieldState_ = provider.entityServices.user.state_
-  .combine(
-    (state, {id}) => {
-      return state[id] && state[id][fieldName]
-    },
-    selectedId_
-  )
+  .map(state => {
+    return state[id] && state[id][fieldName]
+  })
 
   function updateFieldById ({id, value}) {
     return provider.entityServices[entityType].apiEffect.update(id, fieldName, value)
@@ -46,7 +43,7 @@ export default function create ({
     streamFromPromise,
     updateFieldById,
     actions,
-    selectedId_,
+    id,
     save_: actions.streams.update.sampleWith(okButton.actions.streams.press)
   })
   // @TODO: Fix if it doesn't complete when unmounted
