@@ -1,5 +1,6 @@
 import {merge as ramdaMerge} from 'ramda'
-import Colors, {defaultPrimaryMainHex} from '../colors'
+import ColorTheme, {defaultPrimaryMain} from '../color-theme'
+import AnimationTheme, {defaultBaseMs} from '../animation-theme'
 import EntityService from '../entity-service'
 import * as schemas from '../schemas'
 
@@ -15,13 +16,15 @@ export default function create () {
       entityType: 'user'})
   }
 
-  const colors = Colors({initialPrimaryMainHex: defaultPrimaryMainHex})
+  const colorTheme = ColorTheme({initialPrimaryMain: defaultPrimaryMain})
+  const animationTheme = AnimationTheme({initialBaseMs: defaultBaseMs})
 
   return ramdaMerge(
     providerWithLocalStorage,
     {
       entityServices,
-      colors
+      colorTheme,
+      animationTheme
     }
   )
 }

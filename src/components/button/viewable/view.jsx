@@ -29,7 +29,7 @@ export default function create ({
   const Button = styled.button`
     background-color: transparent;
     border: 3px solid ${variants[variant].color};
-    color: ${({state}) => (state.self.isRecentlyPressed ? state.colors.complementaryMain : state.colors.primaryMain)};
+    color: ${({state}) => (state.self.isRecentlyPressed ? state.colorTheme.complementaryMain : state.colorTheme.primaryMain)};
     font-size: 15px;
     padding: 5px;
     

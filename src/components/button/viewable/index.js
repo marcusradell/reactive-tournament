@@ -14,12 +14,12 @@ export default function create ({model}) {
 
   const view = ConnectObserver({
     view: pureView,
-    state_: model.state_.combine((self, colors) => {
+    state_: model.state_.combine((self, colorTheme) => {
       return {
         self,
-        colors
+        colorTheme
       }
-    }, model.colors.state_)
+    }, model.colorTheme.state_)
   })
 
   const viewable = {

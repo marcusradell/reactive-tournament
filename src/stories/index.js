@@ -4,6 +4,8 @@ import { compose } from 'ramda'
 import { of as streamOf } from 'most'
 import { storiesOf } from '@kadira/storybook'
 import Provider from '../components/provider'
+import ColorThemeModel, {defaultPrimaryMain} from '../components/color-theme'
+import ColorThemeViewable from '../components/color-theme/viewable'
 import ButtonModel from '../components/button'
 import ButtonViewable from '../components/button/viewable'
 import InputModel from '../components/input'
@@ -17,15 +19,6 @@ import EntityCrudViewable from '../components/entity-crud/viewable'
 
 const provider = Provider()
 
-// let swap = true
-
-// setInterval(() => {
-//   swap
-//   ? provider.colors.actions.triggers.setPrimaryMainHex('#FA5031')
-//   : provider.colors.actions.triggers.setPrimaryMainHex('#C32689')
-//   swap = !swap
-// }, 1000)
-
 function viewableData (model) {
   return {model}
 }
@@ -35,6 +28,19 @@ function view (viewable) {
 }
 
 storiesOf('components', module)
+  .add('colors', function onAdd () {
+    const model = ColorThemeModel({
+      initialPrimaryMain: defaultPrimaryMain
+    })
+
+    const {view: View} = ColorThemeViewable({model})
+
+    return (
+      <div>
+        <View />
+      </div>
+    )
+  })
   .add('button', function onAdd () {
     const variants = [
       'default',
