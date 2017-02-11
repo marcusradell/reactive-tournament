@@ -6,6 +6,8 @@ import { storiesOf } from '@kadira/storybook'
 import Provider from '../components/provider'
 import ColorThemeModel, {defaultPrimaryMain} from '../components/color-theme'
 import ColorThemeViewable from '../components/color-theme/viewable'
+import AnimationThemeModel, {defaultBaseMs} from '../components/animation-theme'
+import AnimationThemeViewable from '../components/animation-theme/viewable'
 import ButtonModel from '../components/button'
 import ButtonViewable from '../components/button/viewable'
 import InputModel from '../components/input'
@@ -28,12 +30,25 @@ function view (viewable) {
 }
 
 storiesOf('components', module)
-  .add('colors', function onAdd () {
+  .add('color theme', function onAdd () {
     const model = ColorThemeModel({
       initialPrimaryMain: defaultPrimaryMain
     })
 
     const {view: View} = ColorThemeViewable({model})
+
+    return (
+      <div>
+        <View />
+      </div>
+    )
+  })
+  .add('animation theme', function onAdd () {
+    const model = AnimationThemeModel({
+      initialBaseMs: defaultBaseMs
+    })
+
+    const {view: View} = AnimationThemeViewable({model})
 
     return (
       <div>
