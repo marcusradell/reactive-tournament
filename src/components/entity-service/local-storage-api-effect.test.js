@@ -19,6 +19,7 @@ test('interface', () => {
     'create',
     'readAll',
     'update',
+    'updateCache',
     'remove'
   ]
   expect(expected).toEqual(actual)

@@ -1,6 +1,6 @@
 exports[`test render view 1`] = `
 <button
-  className="ysxOs"
+  className="fWekty"
   onClick={[Function]}>
   a
 </button>

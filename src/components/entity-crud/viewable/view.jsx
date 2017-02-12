@@ -1,15 +1,14 @@
 export default function create ({
   React,
   CreateView,
-  ListView,
-  FormView
+  ListView
 }) {
-  return function render () {
+  return function render ({state}) {
     return (
       <div>
         <CreateView />
         <ListView />
-        <FormView />
+        <div>{JSON.stringify(state)}</div>
       </div>
     )
   }

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {merge as ramdaMerge} from 'ramda'
 import ConnectObserver from '../../../utils/connect-observer'
 import View from './view'
+import ViewState from './view-state'
 
 export default function create ({model}) {
   const pureView = View({
@@ -12,17 +13,18 @@ export default function create ({model}) {
     pressTrigger: model.actions.triggers.press
   })
 
+  const viewState_ = ViewState({
+    state_: model.state_,
+    colorThemeState_: model.colorTheme.state_
+  })
+
   const view = ConnectObserver({
     view: pureView,
-    state_: model.state_.combine((self, colorTheme) => {
-      return {
-        self,
-        colorTheme
-      }
-    }, model.colorTheme.state_)
+    state_: viewState_
   })
 
   const viewable = {
+    viewState_,
     pureView,
     view
   }

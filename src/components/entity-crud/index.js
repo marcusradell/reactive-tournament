@@ -7,16 +7,19 @@ export default function create ({provider, entityType}) {
 
   // @TODO: Select createResolved IDs
   const entityList = EntityList({provider, entityType})
-  const selectedId_ = entityList.actions.streams.select
-  const entityForm = EntityForm({
-    provider,
-    entityType,
-    selectedId_})
+  const entityForm_ = entityList.actions.streams.select
+  .map(({id}) => {
+    return EntityForm({
+      provider,
+      entityType,
+      id
+    })
+  })
 
   const children = {
     entityCreate,
     entityList,
-    entityForm
+    entityForm_
   }
 
   return {

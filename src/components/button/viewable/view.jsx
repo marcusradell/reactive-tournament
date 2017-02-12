@@ -38,11 +38,13 @@ export default function create ({
     }
   `
 
-  const view = ({state}) => (
-    <Button onClick={onClick} state={state}>
-      {name}
-    </Button>
-  )
+  const view = ({state}) => {
+    return (
+      <Button onClick={onClick} state={state}>
+        {name}
+      </Button>
+    )
+  }
 
   return view
 }

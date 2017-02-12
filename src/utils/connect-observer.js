@@ -1,5 +1,4 @@
-// Stolen from http://michalzalecki.com/use-rxjs-with-react/
-
+// Inspired by http://michalzalecki.com/use-rxjs-with-react/
 import React from 'react'
 
 export default function create ({state_, view: View}) {

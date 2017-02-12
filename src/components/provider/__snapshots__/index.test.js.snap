@@ -1,8 +1,9 @@
 exports[`test create 1`] = `
 Array [
   "localStorage",
-  "entityServices",
   "schemas",
-  "colors",
+  "entityServices",
+  "colorTheme",
+  "animationTheme",
 ]
 `;

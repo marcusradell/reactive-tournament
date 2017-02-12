@@ -1,4 +1,4 @@
-import Animations, {defaultBaseMs} from '../animations'
+import Animations, {defaultBaseMs} from '../animation-theme'
 
 test('create default state', () => {
   const animations = Animations({initialBaseMs: defaultBaseMs})
