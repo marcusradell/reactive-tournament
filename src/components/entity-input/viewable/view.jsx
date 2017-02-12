@@ -71,11 +71,8 @@ export default function create ({
             onChange={onChange}
             onKeyDown={onKeyDown}
           />
-          <OkButtonView />
-          <CancelButtonView />
-        </div>
-        <div>
-          @TODO: service: {JSON.stringify(state.service, null, 2)}
+          <OkButtonView tabIndex='-1' />
+          <CancelButtonView tabIndex='-1' />
         </div>
       </div>
     )

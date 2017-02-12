@@ -39,8 +39,9 @@ export default function create ({
   `
 
   const view = ({state}) => {
+    // @TODO: Be able to make button accessible via props.
     return (
-      <Button onClick={onClick} state={state}>
+      <Button tabIndex='-1' onClick={onClick} state={state}>
         {name}
       </Button>
     )
