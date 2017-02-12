@@ -4,6 +4,7 @@ import ConnectObserver from '../../../utils/connect-observer'
 import EntityCreate from '../../entity-create/viewable'
 import EntityList from '../../entity-list/viewable'
 import EntityForm from '../../entity-form/viewable'
+import ViewState from './view-state'
 import View from './view'
 
 export default function create ({model}) {
@@ -20,21 +21,22 @@ export default function create ({model}) {
     entityForm_
   }
 
+  const viewState_ = ViewState({entityForm_})
+
   const pureView = View({
     React,
     CreateView: entityCreate.view,
     ListView: entityList.view
   })
 
-  entityForm_.startWith({}).forEach(console.log)
-
   const view = ConnectObserver({
-    state_: entityForm_.startWith({}),
+    state_: viewState_,
     view: pureView
   })
 
   const viewable = {
     children,
+    viewState_,
     pureView,
     view
   }

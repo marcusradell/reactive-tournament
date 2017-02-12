@@ -7,6 +7,12 @@ export default function create ({state_, view: View}) {
       this.subscription = state_.subscribe({
         next: (data) => {
           this.setState({data})
+        },
+        complete: (data) => {
+          console.log('connect-observer::complete(data):', data)
+        },
+        error: (data) => {
+          console.error('connect-observer::error(data):', data)
         }
       })
     }
