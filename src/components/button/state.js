@@ -1,16 +1,16 @@
-export default function create ({ramdaMerge, press_, unpress_}) {
+export default function create ({objectMerge, press_, unpress_}) {
   const initialState = {
     isRecentlyPressed: false
   }
 
   const pressReducer_ = press_
   .map(() => state => (
-    ramdaMerge(state, {isRecentlyPressed: true})
+    objectMerge(state, {isRecentlyPressed: true})
   ))
 
   const unpressReducer_ = unpress_
   .map(() => state => (
-      ramdaMerge(state, {isRecentlyPressed: false})
+      objectMerge(state, {isRecentlyPressed: false})
   ))
 
   const state_ = pressReducer_

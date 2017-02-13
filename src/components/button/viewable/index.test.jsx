@@ -6,7 +6,10 @@ import Model, {variants} from '../../button'
 import Button from './index'
 
 test('create viewable', () => {
-  const provider = Provider()
+  const localStorage = {
+    getItem () {}
+  }
+  const provider = Provider({localStorage})
   const model = Model({
     provider,
     name: 'a',
@@ -26,7 +29,10 @@ test('create viewable', () => {
 })
 
 test('render view', () => {
-  const provider = Provider()
+  const localStorage = {
+    getItem () {}
+  }
+  const provider = Provider({localStorage})
   const model = Model({
     provider,
     name: 'a',

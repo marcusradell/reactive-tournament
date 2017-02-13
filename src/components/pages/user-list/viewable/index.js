@@ -1,5 +1,5 @@
 import React from 'react'
-import {merge as ramdaMerge} from 'ramda'
+import {merge as objectMerge} from 'ramda'
 import ConnectObserver from '../../../../utils/connect-observer'
 import EntityList from '../../../entity-list/viewable'
 import EntityForm from '../../../entity-form/viewable'
@@ -34,7 +34,7 @@ export default function create ({model}) {
     entityForm_
   }
 
-  return ramdaMerge(
+  return objectMerge(
     model,
     viewable
   )

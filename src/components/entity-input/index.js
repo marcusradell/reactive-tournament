@@ -1,7 +1,7 @@
 // @TODO: Rename to entity-input
 import {merge as mostMerge, fromPromise as streamFromPromise} from 'most'
 import {async} from 'most-subject'
-import {merge as ramdaMerge} from 'ramda'
+import {merge as objectMerge} from 'ramda'
 import Button from '../button'
 import Actions from './actions'
 import State from './state'
@@ -33,7 +33,7 @@ export default function create ({
   const actions = Actions({async})
   const state_ = State({
     mostMerge,
-    ramdaMerge,
+    objectMerge,
     okBehavior: okButton.actions.streams.press,
     cancelBehavior: cancelButton.actions.streams.press,
     updateBehavior: actions.streams.update

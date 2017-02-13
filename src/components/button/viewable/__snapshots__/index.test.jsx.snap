@@ -1,7 +1,8 @@
 exports[`test render view 1`] = `
 <button
   className="fWekty"
-  onClick={[Function]}>
+  onClick={[Function]}
+  tabIndex="-1">
   a
 </button>
 `;

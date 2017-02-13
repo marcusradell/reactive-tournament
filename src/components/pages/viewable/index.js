@@ -1,6 +1,6 @@
 import React from 'react'
 import ConnectObserver from '../../../utils/connect-observer'
-import {merge as ramdaMerge} from 'ramda'
+import {merge as objectMerge} from 'ramda'
 import Landing from '../landing/viewable'
 import Login from '../login/viewable'
 import UserList from '../user-list/viewable'
@@ -30,7 +30,7 @@ export default function create ({model}) {
     view
   }
 
-  return ramdaMerge(
+  return objectMerge(
     model,
     viewable
   )

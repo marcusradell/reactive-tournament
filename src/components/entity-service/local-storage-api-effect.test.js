@@ -1,4 +1,4 @@
-import {merge as ramdaMerge, omit as ramdaOmit} from 'ramda'
+import {merge as objectMerge, omit as ramdaOmit} from 'ramda'
 import {v4 as uuidV4} from 'uuid'
 import LocalStorageApiEffect from './local-storage-api-effect'
 
@@ -8,7 +8,7 @@ test('interface', () => {
   function setStateTrigger () { }
   const apiEffect = LocalStorageApiEffect({
     localStorage,
-    ramdaMerge,
+    objectMerge,
     ramdaOmit,
     uuidV4,
     entityType: 'thing',

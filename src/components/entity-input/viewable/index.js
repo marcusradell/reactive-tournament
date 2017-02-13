@@ -1,6 +1,6 @@
 import React from 'react'
 import {css, StyleSheet} from 'aphrodite'
-import {merge as ramdaMerge} from 'ramda'
+import {merge as objectMerge} from 'ramda'
 import ConnectObserver from '../../../utils/connect-observer'
 import Children from './children'
 import Button from '../../button/viewable'
@@ -28,7 +28,7 @@ export default function create ({model}) {
     view
   }
 
-  return ramdaMerge(
+  return objectMerge(
     model,
     viewable
   )

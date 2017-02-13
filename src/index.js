@@ -4,7 +4,7 @@ import './index.css'
 import App from './app'
 import Provider from './components/provider'
 
-const provider = Provider()
+const provider = Provider({localStorage: window.localStorage})
 const app = App({provider})
 const {view: View} = app
 ReactDOM.render(<View />, document.getElementById('root'))

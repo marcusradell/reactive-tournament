@@ -1,12 +1,12 @@
-import {merge as ramdaMerge} from 'ramda'
+import {merge as objectMerge} from 'ramda'
 import ColorTheme, {defaultPrimaryMain} from '../color-theme'
 import AnimationTheme, {defaultBaseMs} from '../animation-theme'
 import EntityService from '../entity-service'
 import * as schemas from '../schemas'
 
-export default function create () {
+export default function create ({localStorage}) {
   const providerWithLocalStorage = {
-    localStorage: window.localStorage,
+    localStorage,
     schemas
   }
 
@@ -19,7 +19,7 @@ export default function create () {
   const colorTheme = ColorTheme({initialPrimaryMain: defaultPrimaryMain})
   const animationTheme = AnimationTheme({initialBaseMs: defaultBaseMs})
 
-  return ramdaMerge(
+  return objectMerge(
     providerWithLocalStorage,
     {
       entityServices,

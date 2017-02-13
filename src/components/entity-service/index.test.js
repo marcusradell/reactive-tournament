@@ -1,9 +1,11 @@
+import Provider from '../provider'
 import EntityService from '../entity-service'
 
 test('interface', () => {
-  const provider = {
-    localStorage: {}
+  const localStorage = {
+    getItem () {}
   }
+  const provider = Provider({localStorage})
   const entityService = EntityService({
     provider,
     entityType: 'thing'

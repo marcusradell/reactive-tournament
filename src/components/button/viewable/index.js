@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {merge as ramdaMerge} from 'ramda'
+import {merge as objectMerge} from 'ramda'
 import ConnectObserver from '../../../utils/connect-observer'
 import View from './view'
 import ViewState from './view-state'
@@ -29,7 +29,7 @@ export default function create ({model}) {
     view
   }
 
-  return ramdaMerge(
+  return objectMerge(
     model,
     viewable
   )

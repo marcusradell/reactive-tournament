@@ -1,12 +1,12 @@
 import {async} from 'most-subject'
 import {empty} from 'most'
-import {merge as ramdaMerge} from 'ramda'
+import {merge as objectMerge} from 'ramda'
 import State from './state'
 
 test('initial state', () => {
   const press_ = empty()
   const unpress_ = empty()
-  const state_ = State({ramdaMerge, press_, unpress_})
+  const state_ = State({objectMerge, press_, unpress_})
   const expected = {
     isRecentlyPressed: false
   }
@@ -18,7 +18,7 @@ test('initial state', () => {
 test('press_', () => {
   const press_ = async()
   const unpress_ = empty()
-  const state_ = State({ramdaMerge, press_, unpress_})
+  const state_ = State({objectMerge, press_, unpress_})
   const expected = {
     isRecentlyPressed: true
   }
@@ -36,7 +36,7 @@ test('press_ and then unpress_', () => {
   const expected = {isRecentlyPressed: false}
   const unpress_ = async()
   const press_ = async()
-  const state_ = State({ramdaMerge, press_, unpress_})
+  const state_ = State({objectMerge, press_, unpress_})
 
   // Skip initial state and the press
   const promise = state_

@@ -1,4 +1,4 @@
-import {merge as ramdaMerge} from 'ramda'
+import {merge as objectMerge} from 'ramda'
 import {async as mostAsync} from 'most-subject'
 import {fromEvent as mostFromEvent} from 'most'
 import BrowserRouter from './browser-router'
@@ -26,7 +26,7 @@ export default function create ({provider}) {
   })
   const state_ = State({
     initialRoute,
-    ramdaMerge,
+    objectMerge,
     setRouteSuccess: epics.setRouteSuccess
   })
   const pages = Pages({provider, routerState_: state_})

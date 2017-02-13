@@ -7,13 +7,13 @@ export default function create ({
     return (
       <div>
         <CreateView />
+        <ListView />
         <div>
           {
             state.entityForm &&
             React.createElement(state.entityForm.view)
           }
         </div>
-        <ListView />
       </div>
     )
   }

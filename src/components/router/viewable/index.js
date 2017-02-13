@@ -1,5 +1,5 @@
 import React from 'react'
-import {merge as ramdaMerge} from 'ramda'
+import {merge as objectMerge} from 'ramda'
 import Pages from '../../pages/viewable'
 import View from './view'
 
@@ -16,7 +16,7 @@ export default function create ({model}) {
     view
   }
 
-  return ramdaMerge(
+  return objectMerge(
     model,
     viewable
   )

@@ -1,6 +1,6 @@
 // @TODO: Separate commands from queries.
 import {async} from 'most-subject'
-import {merge as ramdaMerge, omit as ramdaOmit} from 'ramda'
+import {merge as objectMerge, omit as objectOmit} from 'ramda'
 import {v4 as uuidV4} from 'uuid'
 import Actions from './actions'
 import State from './state'
@@ -17,13 +17,15 @@ export default function create ({provider, entityType}) {
   const state_ = State({hold, setState_: actions.streams.setState})
   const apiEffect = LocalStorageApiEffect({
     localStorage,
-    ramdaMerge,
-    ramdaOmit,
+    objectMerge,
+    objectOmit,
     uuidV4,
     entityType,
     setStateTrigger: actions.triggers.setState
   })
 
+  // @TODO: Move to better place. Consolidate with epics.
+  state_.drain()
   apiEffect.updateCache()
 
   return {

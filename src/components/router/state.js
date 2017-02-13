@@ -1,4 +1,8 @@
-export default function create ({initialRoute, ramdaMerge, setRouteSuccess}) {
+export default function create ({
+  initialRoute,
+  objectMerge,
+  setRouteSuccess
+}) {
   const initialState = {
     route: initialRoute
   }
@@ -6,7 +10,7 @@ export default function create ({initialRoute, ramdaMerge, setRouteSuccess}) {
   const setRouteSuccessReducer = setRouteSuccess
   .map(function onMap (route) {
     return function reduce (stateObject) {
-      return ramdaMerge(
+      return objectMerge(
         stateObject,
         {route}
       )
