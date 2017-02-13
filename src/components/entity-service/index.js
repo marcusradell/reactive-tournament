@@ -24,6 +24,8 @@ export default function create ({provider, entityType}) {
     setStateTrigger: actions.triggers.setState
   })
 
+  apiEffect.updateCache()
+
   return {
     labels,
     actions,

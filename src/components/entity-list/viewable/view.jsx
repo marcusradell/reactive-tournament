@@ -39,7 +39,7 @@ export default function create ({React, styled, selectTrigger}) {
       <div>
         <h2>Entity List</h2>
         {Object.keys(state.entityService).map((key) => (
-          getListItemView(key, state.list.selectedId, state.entityService[key])
+          getListItemView(key, state.self.selectedId, state.entityService[key])
         ))}
       </div>
     )

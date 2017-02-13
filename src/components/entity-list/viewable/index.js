@@ -7,7 +7,7 @@ import View from './view'
 export default function create ({model}) {
   const viewState = model.state_
   .combine(
-    (list, entityService) => ({list, entityService}),
+    (self, entityService) => ({self, entityService}),
     model.children.entityService.state_
   )
 

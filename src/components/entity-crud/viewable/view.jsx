@@ -4,16 +4,16 @@ export default function create ({
   ListView
 }) {
   return function render ({state}) {
-    console.log(state)
     return (
       <div>
         <CreateView />
-        <ListView />
         <div>
           {
-            state.entityForm && React.createElement(state.entityForm.view)
+            state.entityForm &&
+            React.createElement(state.entityForm.view)
           }
         </div>
+        <ListView />
       </div>
     )
   }
