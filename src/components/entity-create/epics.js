@@ -4,15 +4,16 @@ export default function create ({
   create_,
   createResolvedTrigger
 }) {
-  const combined_ = create_
+  const createResolved_ = create_
   .chain(() => {
     return observableFromPromise(createEntityEffect())
   })
-  .tap(({id}) => {
-    return createResolvedTrigger(id)
+  .tap((data) => {
+    return createResolvedTrigger(data)
   })
 
   return {
-    combined_
+    combined_: createResolved_,
+    createResolved_
   }
 }

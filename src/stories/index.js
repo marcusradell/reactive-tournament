@@ -19,7 +19,7 @@ import FormViewable from '../components/entity-form/viewable'
 import EntityCrudModel from '../components/entity-crud'
 import EntityCrudViewable from '../components/entity-crud/viewable'
 
-const provider = Provider()
+const provider = Provider({localStorage: window.localStorage})
 
 function viewableData (model) {
   return {model}

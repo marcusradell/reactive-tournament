@@ -1,4 +1,9 @@
-export default function create ({React, styled, selectTrigger}) {
+export default function create ({
+  React,
+  styled,
+  EntityCreateView,
+  selectTrigger
+}) {
   function onClickApplyId (id) {
     return function onClick () {
       selectTrigger({id})
@@ -38,6 +43,7 @@ export default function create ({React, styled, selectTrigger}) {
     return (
       <div>
         <h2>Entity List</h2>
+        <EntityCreateView />
         {Object.keys(state.entityService).map((key) => (
           getListItemView(key, state.self.selectedId, state.entityService[key])
         ))}
