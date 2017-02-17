@@ -32,7 +32,9 @@ export default function create ({
   function updateCache () {
     return readAll()
     .then((state) => {
-      setStateTrigger(state)
+      setTimeout(() => {
+        setStateTrigger(state)
+      }, 1000)
     })
   }
 

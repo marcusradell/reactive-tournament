@@ -15,23 +15,9 @@ export default function create ({provider, entityType}) {
     entityService,
     entityCreate
   }
-  // @TODO: remove if not needed.
-  // .merge(
-  //   entityCreate.epics.createResolved_
-  //   .map((data) => {
-  //     return entityService.state_
-  //     .filter((entityServiceState) => {
-  //       return entityServiceState[data.id]
-  //     })
-  //     .map(() => {
-  //       return data
-  //     })
-  //     .take(1)
-  //   })
-  //   .switch()
-  // )
   const actions = Actions({
     Subject,
+    entityServiceState_: entityService.state_,
     entityCreateResolved_: entityCreate.actions.streams.createResolved
   })
   const state_ = State({
