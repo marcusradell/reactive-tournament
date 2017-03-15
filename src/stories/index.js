@@ -109,7 +109,8 @@ storiesOf('components', module)
     const inputModel = EntityInputModel({
       provider,
       fieldName: 'email',
-      selectedId_: streamOf(''),
+      id: '0',
+      entityType: 'user',
       type: 'text'
     })
     const inputViewable = EntityInputViewable({ model: inputModel })
@@ -126,7 +127,7 @@ storiesOf('components', module)
       model: FormModel({
         provider,
         entityType: 'user',
-        id: 1
+        id: '1'
       })
     })
 

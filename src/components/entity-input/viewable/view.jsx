@@ -1,18 +1,16 @@
 export default function create ({
-  ConnectObserver,
   React,
   css,
   StyleSheet,
   fieldName,
   type,
-  state_,
-  entityServiceFieldState_,
   updateTrigger,
   OkButtonView,
   okTrigger,
   CancelButtonView,
   cancelTrigger
 }) {
+  // @TODO: Replace w styled-components
   const styles = StyleSheet.create({
     component: {
       padding: '5px'
@@ -78,17 +76,5 @@ export default function create ({
     )
   }
 
-  // @TODO: Refactor out to index.js
-  const viewState_ = state_
-  .combine((local, service) => {
-    return {local, service}
-  },
-  entityServiceFieldState_
-  )
-
-  // @TODO: Refactor out to index.js
-  return ConnectObserver({
-    state_: viewState_,
-    view
-  })
+  return view
 }
