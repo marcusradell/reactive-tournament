@@ -9,12 +9,12 @@ function colorThemeToStyles ({
   complementarySecondaryLight
 }) {
   const success = {
-    color: primaryMain,
-    colorPressed: primaryMainLight
-  }
-  const action = {
     color: primarySecondary,
     colorPressed: primarySecondaryLight
+  }
+  const action = {
+    color: primaryMain,
+    colorPressed: primaryMainLight
   }
   const error = {
     color: complementaryMain,
