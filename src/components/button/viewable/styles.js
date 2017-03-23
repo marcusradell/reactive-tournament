@@ -17,12 +17,12 @@ function colorThemeToStyles ({
     colorPressed: primaryMainLight
   }
   const error = {
-    color: complementaryMain,
-    colorPressed: complementaryMainLight
-  }
-  const warning = {
     color: complementarySecondary,
     colorPressed: complementarySecondaryLight
+  }
+  const warning = {
+    color: complementaryMain,
+    colorPressed: complementaryMainLight
   }
 
   return {
