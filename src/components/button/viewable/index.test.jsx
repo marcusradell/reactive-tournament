@@ -41,7 +41,6 @@ test('render view', () => {
   const viewable = Button({model})
   const View = viewable.pureView
 
-  // @TODO: Get hold of the viewState_ here or we need to recombine.
   return viewable.viewState_.take(1).forEach((state) => {
     const mountWrapper = shallow(<View state={state} />)
     const component = mountWrapper.first().shallow()

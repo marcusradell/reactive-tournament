@@ -1,0 +1,14 @@
+/* bsconfig.json */
+{
+  "name": "reactive-tournament",
+  "sources": [
+    "src"
+  ],
+  "bs-dependencies": [
+    "reason-js",
+    "rehydrate"
+  ],
+  "reason": {
+    "react-jsx": true
+  }
+}

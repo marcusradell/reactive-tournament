@@ -1,8 +1,8 @@
-export default function create ({state_, colorThemeState_}) {
-  return state_.combine((self, colorTheme) => {
+export default function create ({state_, styles_}) {
+  return state_.combine((self, styles) => {
     return {
       self,
-      colorTheme
+      styles
     }
-  }, colorThemeState_)
+  }, styles_)
 }

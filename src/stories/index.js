@@ -1,7 +1,6 @@
 import React from 'react'
 import '../index.css'
 import { compose } from 'ramda'
-import { of as streamOf } from 'most'
 import { storiesOf } from '@kadira/storybook'
 import Provider from '../components/provider'
 import ColorThemeModel, {defaultPrimaryMain} from '../components/color-theme'
@@ -58,7 +57,6 @@ storiesOf('components', module)
   })
   .add('button', function onAdd () {
     const variants = [
-      'default',
       'action',
       'success',
       'warning',

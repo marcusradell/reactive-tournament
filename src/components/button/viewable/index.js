@@ -4,8 +4,13 @@ import {merge as objectMerge} from 'ramda'
 import ConnectObserver from '../../../utils/connect-observer'
 import View from './view'
 import ViewState from './view-state'
+import Styles from './styles'
 
 export default function create ({model}) {
+  const styles_ = Styles({
+    colorThemeState_: model.colorTheme.state_
+  })
+
   const pureView = View({
     React,
     styled,
@@ -15,7 +20,7 @@ export default function create ({model}) {
 
   const viewState_ = ViewState({
     state_: model.state_,
-    colorThemeState_: model.colorTheme.state_
+    styles_
   })
 
   const view = ConnectObserver({

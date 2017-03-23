@@ -4,32 +4,22 @@ export default function create ({
   labels: {name, variant},
   pressTrigger
 }) {
-  const variants = {
-    default: {
-      color: '#7C786A'
-    },
-    action: {
-      color: '#8DCDC1'
-    },
-    success: {
-      color: '#D3E397'
-    },
-    warning: {
-      color: '#FFF5C3'
-    },
-    error: {
-      color: '#EB6E44'
-    }
-  }
-
   function onClick () {
     pressTrigger()
   }
 
   const Button = styled.button`
     background-color: transparent;
-    border: 3px solid ${variants[variant].color};
-    color: ${({state}) => (state.self.isRecentlyPressed ? state.colorTheme.complementaryMain : state.colorTheme.primaryMain)};
+    border: 3px solid ${({state}) => (
+      state.self.isRecentlyPressed
+      ? state.styles.variants[variant].colorPressed
+      : state.styles.variants[variant].color
+    )};
+    color: ${({state}) => (
+      state.self.isRecentlyPressed
+      ? state.styles.variants[variant].colorPressed
+      : state.styles.variants[variant].color
+    )};
     font-size: 15px;
     padding: 5px;
     
@@ -39,7 +29,6 @@ export default function create ({
   `
 
   const view = ({state}) => {
-    // @TODO: Be able to make button accessible via props.
     return (
       <Button tabIndex='-1' onClick={onClick} state={state}>
         {name}
