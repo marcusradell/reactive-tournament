@@ -1395,17 +1395,17 @@ browserslist@^1.1.1, browserslist@^1.1.3, browserslist@^1.4.0, browserslist@~1.4
   dependencies:
     caniuse-db "^1.0.30000539"
 
+bs-fetch@BuckleTypes/bs-fetch:
+  version "0.1.0"
+  resolved "https://codeload.github.com/BuckleTypes/bs-fetch/tar.gz/f83d1ba09cb8126b989ef0030b4aa2864e4eaa9f"
+
 bs-loader@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/bs-loader/-/bs-loader-1.1.0.tgz#7219f4ac513a3102ad8d506b8d28873bd106916e"
 
-bs-platform@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-1.5.2.tgz#a92b42d511952ea712dcf17cb056394afbf541aa"
-
-bs-promise@BuckleTypes/bs-promise:
-  version "0.3.0"
-  resolved "https://codeload.github.com/BuckleTypes/bs-promise/tar.gz/c2fc83dff59ffb468766e5e0db38dd624232e8c0"
+bs-platform@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-1.6.0.tgz#c15900ed04a10c2fa532ade25b0582e4c29aedc9"
 
 bser@^1.0.2:
   version "1.0.2"
@@ -6076,7 +6076,7 @@ react-docgen@^2.12.1:
     node-dir "^0.1.10"
     recast "^0.11.5"
 
-react-dom@^15.4.1:
+react-dom@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.4.2.tgz#015363f05b0a1fd52ae9efdd3a0060d90695208f"
   dependencies:
@@ -6196,7 +6196,7 @@ react-test-renderer@^15.4.1:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
-react@^15.4.1:
+react@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.4.2.tgz#41f7991b26185392ba9bae96c8889e7e018397ef"
   dependencies:
@@ -6291,11 +6291,15 @@ readline2@^1.0.1:
     is-fullwidth-code-point "^1.0.0"
     mute-stream "0.0.5"
 
-reason-js@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/reason-js/-/reason-js-0.2.0.tgz#20ab0ac942bb14c99ad0ddbec4ea51d4981336bc"
+reason-js@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/reason-js/-/reason-js-0.3.0.tgz#87ef218bf10e4e9be93bc44b459bec2c60cfdd02"
   dependencies:
-    bs-promise BuckleTypes/bs-promise
+    bs-fetch BuckleTypes/bs-fetch
+
+"reason-react@https://github.com/reasonml/reason-react.git":
+  version "0.1.0"
+  resolved "https://github.com/reasonml/reason-react.git#eda683568492971e314924e0eb108099305c0622"
 
 recast@^0.11.5:
   version "0.11.20"

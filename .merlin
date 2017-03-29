@@ -1,0 +1,17 @@
+####{BSB GENERATED: NO EDIT
+FLG -ppx /Users/mn/code/reactive-tournament/node_modules/bs-platform/bin/reactjs_jsx_ppx.exe
+FLG -ppx /Users/mn/code/reactive-tournament/node_modules/bs-platform/bin/bsppx.exe
+S /Users/mn/code/reactive-tournament/node_modules/bs-platform/lib/ocaml
+B /Users/mn/code/reactive-tournament/node_modules/bs-platform/lib/ocaml
+FLG -nostdlib -no-alias-deps -color always -w -40+6+7+27+32..39+44+45
+S /Users/mn/code/reactive-tournament/node_modules/reason-react/lib/ocaml
+B /Users/mn/code/reactive-tournament/node_modules/reason-react/lib/ocaml
+S /Users/mn/code/reactive-tournament/node_modules/reason-js/lib/ocaml
+B /Users/mn/code/reactive-tournament/node_modules/reason-js/lib/ocaml
+S re-src
+B lib/bs/re-src
+S re-src/components
+B lib/bs/re-src/components
+S re-src/components/title
+B lib/bs/re-src/components/title
+####BSB GENERATED: NO EDIT}

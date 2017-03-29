@@ -1,14 +1,24 @@
-/* bsconfig.json */
+/* This is the BuckleScript configuration file. Note that this is a comment;
+  BuckleScript comes with a JSON parser that supports comments and trailing
+  comma. If this screws with your editor highlighting, please tell us by filing
+  an issue! */
 {
-  "name": "reactive-tournament",
+  "name" : "reactive-tournament",
+  "reason" : { "react-jsx" : true},
+  "bs-dependencies": ["reason-react", "reason-js"],
   "sources": [
-    "src"
+    {
+      "dir": "re-src",
+      "subdirs": [
+        {
+          "dir": "components",
+          "subdirs": [
+            {
+              "dir": "title",
+            }
+          ],
+        }
+      ],
+    }
   ],
-  "bs-dependencies": [
-    "reason-js",
-    "rehydrate"
-  ],
-  "reason": {
-    "react-jsx": true
-  }
 }
