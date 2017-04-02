@@ -8,13 +8,13 @@
   "bs-dependencies": ["reason-react", "reason-js"],
   "sources": [
     {
-      "dir": "re-src",
+      "dir": "src",
       "subdirs": [
         {
           "dir": "components",
           "subdirs": [
             {
-              "dir": "title",
+              "dir": "title-view",
             }
           ],
         }

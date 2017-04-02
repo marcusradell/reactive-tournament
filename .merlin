@@ -8,10 +8,10 @@ S /Users/mn/code/reactive-tournament/node_modules/reason-react/lib/ocaml
 B /Users/mn/code/reactive-tournament/node_modules/reason-react/lib/ocaml
 S /Users/mn/code/reactive-tournament/node_modules/reason-js/lib/ocaml
 B /Users/mn/code/reactive-tournament/node_modules/reason-js/lib/ocaml
-S re-src
-B lib/bs/re-src
-S re-src/components
-B lib/bs/re-src/components
-S re-src/components/title
-B lib/bs/re-src/components/title
+S src
+B lib/bs/src
+S src/components
+B lib/bs/src/components
+S src/components/title-view
+B lib/bs/src/components/title-view
 ####BSB GENERATED: NO EDIT}

@@ -6,6 +6,7 @@ import State from './state'
 
 export default function create ({provider, entityType}) {
   const entityService = provider.entityServices[entityType]
+  const colorTheme = provider.colorTheme
 
   const entityCreate = EntityCreate({provider, entityType})
   const labels = {
@@ -26,6 +27,7 @@ export default function create ({provider, entityType}) {
   })
 
   return {
+    colorTheme,
     labels,
     children,
     actions,

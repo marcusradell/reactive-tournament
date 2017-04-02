@@ -13,8 +13,9 @@ export default function create ({model}) {
   )
   const viewState = model.state_
   .combine(
-    (self, entityService) => ({self, entityService}),
-    model.children.entityService.state_
+    (self, entityService, colorTheme) => ({self, entityService, colorTheme}),
+    model.children.entityService.state_,
+    model.colorTheme.state_
   )
 
   const pureView = View({

@@ -11,19 +11,19 @@ refmt = /Users/mn/code/reactive-tournament/node_modules/bs-platform/bin/refmt.ex
 reason_react_jsx = -ppx '/Users/mn/code/reactive-tournament/node_modules/bs-platform/bin/reactjs_jsx_ppx.exe'
 refmt_flags = --print binary
 bsb_dir_group = 0
-bsc_lib_includes = -I re-src/components/title -I re-src/components -I re-src
+bsc_lib_includes = -I src/components/title-view -I src/components -I src
 rule build_ast_and_deps_from_reason_impl
   command = ${bsc} -pp "${refmt} ${refmt_flags}" ${reason_react_jsx}  ${ppx_flags} ${bsc_flags} -c -o ${out} -bs-syntax-only -bs-binary-ast -impl ${in}
   description = [34mBuilding[39m [2m${out}[22m
-build re-src/components/title/index.mlast : build_ast_and_deps_from_reason_impl $src_root_dir/re-src/components/title/index.re
+build src/components/title-view/index.mlast : build_ast_and_deps_from_reason_impl $src_root_dir/src/components/title-view/index.re
 rule build_deps
   command = ${bsdep} -g ${bsb_dir_group} -MD ${in}
   description = [34mBuilding[39m [2m${out}[22m
-build re-src/components/title/index.mlast.d : build_deps re-src/components/title/index.mlast
+build src/components/title-view/index.mlast.d : build_deps src/components/title-view/index.mlast
 rule build_cmj_cmi
   command = ${bsc} ${bs_package_flags} -bs-assume-no-mli -bs-no-builtin-ppx-ml -bs-no-implicit-include ${bs_package_includes} ${bsc_lib_includes} ${bsc_extra_includes} ${bsc_flags} -o ${in} -c  ${in} ${postbuild}
   depfile = ${in}.d
   description = [34mBuilding[39m [2m${out}[22m
-build re-src/components/title/index.cmj $src_root_dir/lib/js/re-src/components/title/index.js re-src/components/title/index.cmi : build_cmj_cmi re-src/components/title/index.mlast
-  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/re-src/components/title
-build build.ninja : phony  ||  re-src/components/title/index.mlast.d
+build src/components/title-view/index.cmj $src_root_dir/lib/js/src/components/title-view/index.js src/components/title-view/index.cmi : build_cmj_cmi src/components/title-view/index.mlast
+  bs_package_flags = $bs_package_flags  -bs-package-output commonjs:lib/js/src/components/title-view
+build build.ninja : phony  ||  src/components/title-view/index.mlast.d

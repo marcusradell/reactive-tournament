@@ -11,9 +11,8 @@ export default function create ({
   }
 
   function getFieldView (key, value) {
-    // @TODO: Guard against null or undefined, but allow falsy values.
     return (
-      value &&
+      value != null &&
       <div key={key}>
         <div>{key}</div>
         <div>{value}</div>
@@ -22,12 +21,16 @@ export default function create ({
   }
 
   const ListItemView = styled.div`
-    backgroundColor: ${({selected}) => selected ? 'goldenrod' : 'transparent'}
+    backgroundColor: ${({selected, colorTheme}) => selected ? colorTheme.primaryMain : 'transparent'};
   `
 
-  function getListItemView (id, selectedId, fields) {
+  function getListItemView (id, selectedId, fields, colorTheme) {
     return (
-      <ListItemView key={id} selected={id === selectedId} onClick={onClickApplyId(id)}>
+      <ListItemView
+        key={id}
+        selected={id === selectedId}
+        colorTheme={colorTheme}
+        onClick={onClickApplyId(id)}>
         <div>
           <div>id</div>
           <div>{id}</div>
@@ -42,10 +45,9 @@ export default function create ({
   function view ({state}) {
     return (
       <div>
-        <h2>Entity List</h2>
         <EntityCreateView />
         {Object.keys(state.entityService).map((key) => (
-          getListItemView(key, state.self.selectedId, state.entityService[key])
+          getListItemView(key, state.self.selectedId, state.entityService[key], state.colorTheme)
         ))}
       </div>
     )
